@@ -1,9 +1,7 @@
 <?php
 
-function actionaccuril($twig,$db) {
-    $form = array();
-        
-    
-    echo $twig->render('index.html.twig', array());
-}
+    function actionAccueil($twig){
+        echo $twig->render('index.html.twig', array());
+    }
+?>
 
