@@ -1,24 +1,28 @@
 {% extends "base.html.twig" %}
-<<<<<<< HEAD
+
 {% block title %} {{ parent() }} Accueil {% endblock %}
 
+
 {% block contenu %}
-accueil de déve
+
+    <h1>Les commentaires</h1>
+    <div class="panel panel-default"> 
+
+
+
+
+        <div class="table-responsive"> 
+            <table class="table table-hover table-striped">
+                <tr><th>Date</th><th>Nom</th><th>Message</th><th>Note</th><th></th><th></th></tr>
+
+                {% for u in liste %}
+
+                    <tr><td>{{date}}</td><td>{{u.nom}}</td><td>{{message}}</td><td>{{note}}</td ><td> <div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash"></span></a></div></td></tr> 
+
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
 {% endblock %}
-=======
-
-
-{% block title %} {{ parent() }} Accueil {% endblock %}
-
-
-<<<<<<< HEAD
-{% block contenu %}
-    
-    Test
-            
-        
-{% endblock %}    
->>>>>>> 23c7b0e4e16463b41df5f4e7e20b6541e997b3b1
-=======
-{% block contenu %} <h1>Test </h1> {% endblock %} 
->>>>>>> a506c4ae73c198888fc7ef5273b50b5c73339f18
