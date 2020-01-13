@@ -5,4 +5,6 @@ function actionAccueil($twig){
     
 }
 
-
+function actionInscription($twig){
+    echo $twig->render('inscription.html.twig', array());
+}
