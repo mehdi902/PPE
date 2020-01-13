@@ -15,11 +15,10 @@ function getPage($db){
     if (!isset($lesPages[$page])){
         $page = 'accueil';
         }
-
     $contenu = $lesPages[$page];
     }
-
-    else{   $contenu = $lesPages['maintenance']; }
+    else{$contenu = $lesPages['maintenance'];
+    }
     
 return $contenu; 
 } ?>
