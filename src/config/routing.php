@@ -1,9 +1,12 @@
 <?php
 
-function getPage(){
+function getPage($db){
     $lesPages['accueil'] = "actionAccueil";
     $lesPages['inscription'] = "actionInscription";
+    $lesPages['maintenance'] = "actionMaintenance";
     
+
+    if ($db!=null){
     if(isset($_GET['page'])){
         $page = $_GET['page'];
     }
@@ -13,8 +16,10 @@ function getPage(){
         $page = 'accueil';
         }
 
-    
-$contenu = $lesPages[$page];
+    $contenu = $lesPages[$page];
+    }
+
+    else{   $contenu = $lesPages['maintenance']; }
     
 return $contenu; 
 } ?>
