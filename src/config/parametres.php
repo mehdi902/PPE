@@ -1,8 +1,7 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$config['serveur']='localhost:3306';
+$config['login'] = 'login4066';
+$config['mdp'] ='ZpOHhSeWUcUkAhG';
+$config['bd'] = 'dblogin4066'; 
+?>
 
