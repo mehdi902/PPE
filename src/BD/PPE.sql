@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Lun 13 Janvier 2020 à 08:34
+-- Généré le :  Jeu 16 Janvier 2020 à 10:27
 -- Version du serveur :  10.1.41-MariaDB-0+deb9u1
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `PPE`
 --
-CREATE DATABASE IF NOT EXISTS `PPE` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `PPE`;
 
 -- --------------------------------------------------------
 
@@ -40,7 +38,6 @@ CREATE TABLE `codage` (
 
 CREATE TABLE `developpeur` (
   `id` int(11) NOT NULL,
-  `iddeveloppeur` int(11) NOT NULL,
   `idcodage` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -59,13 +56,47 @@ CREATE TABLE `langage` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `role`
+--
+
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `libelle` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `role`
+--
+
+INSERT INTO `role` (`id`, `libelle`) VALUES
+(1, 'administrateur'),
+(2, 'utilisateur');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `utilisateur`
 --
 
 CREATE TABLE `utilisateur` (
-  `id` int(11) NOT NULL,
-  `libelle` varchar(50) NOT NULL
+  `idrole` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `mdp` varchar(255) NOT NULL,
+  `iddeveloppeur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`idrole`, `nom`, `prenom`, `email`, `mdp`, `iddeveloppeur`) VALUES
+(1, 'aze', 'aze', 'azeeeaaa@gmail', '$2y$10$4h7osfqk.Qwu7zr9aOusKuU5849WPFgnlF8bwe9tYE6d1u.fjNCem', 0),
+(1, 'aze', 'aze', 'azerrsdxdf@gm', '$2y$10$f6WB.YbMMV.8FTvtVslsW.N2AWqGnM581hxP.bsneS/7s6Qz4xrpi', 0),
+(1, 'aze', 'aze', 'dsde@gfeke', '$2y$10$UlVZ0wLn5GRCa/u6K2dZ1.ar9dVs8foIFl/q5v2A3A3UeDbUrPwcS', 0),
+(1, 'aze', 'aze', 'mehditimmerman915@gmail.com', '$2y$10$B37hn3c96zPJRyknGHIYieU/PLTAfkNgs4BK10xSoFsGa8ArVuf/S', 0),
+(1, 'zer', 'zer', 'zer@mgg', '$2y$10$jWTLg8flESHaqYXKDlZUyut27PcIShJR706rhTL7h2syDb42oUZre', 0);
 
 --
 -- Index pour les tables exportées
@@ -82,7 +113,6 @@ ALTER TABLE `codage`
 --
 ALTER TABLE `developpeur`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `iddeveloppeur` (`iddeveloppeur`),
   ADD KEY `idcodage` (`idcodage`);
 
 --
@@ -93,10 +123,18 @@ ALTER TABLE `langage`
   ADD KEY `idcodage` (`idcodage`);
 
 --
+-- Index pour la table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`email`),
+  ADD KEY `idrole` (`idrole`),
+  ADD KEY `iddeveloppeur` (`iddeveloppeur`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -113,10 +151,10 @@ ALTER TABLE `codage`
 ALTER TABLE `langage`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `utilisateur`
+-- AUTO_INCREMENT pour la table `role`
 --
-ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Contraintes pour les tables exportées
 --
@@ -125,7 +163,6 @@ ALTER TABLE `utilisateur`
 -- Contraintes pour la table `developpeur`
 --
 ALTER TABLE `developpeur`
-  ADD CONSTRAINT `developpeur_ibfk_1` FOREIGN KEY (`iddeveloppeur`) REFERENCES `utilisateur` (`id`),
   ADD CONSTRAINT `developpeur_ibfk_2` FOREIGN KEY (`idcodage`) REFERENCES `codage` (`id`);
 
 --
@@ -133,6 +170,12 @@ ALTER TABLE `developpeur`
 --
 ALTER TABLE `langage`
   ADD CONSTRAINT `langage_ibfk_1` FOREIGN KEY (`idcodage`) REFERENCES `codage` (`id`);
+
+--
+-- Contraintes pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD CONSTRAINT `utilisateur_ibfk_1` FOREIGN KEY (`idrole`) REFERENCES `role` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
