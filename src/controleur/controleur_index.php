@@ -12,7 +12,3 @@ function actionMaintenance($twig) {
 function actionInscription($twig){
     echo $twig->render('inscription.html.twig', array());
 }
-
-function actionConnexion($twig){
-    echo $twig->render('connexion.html.twig', array());
-}
