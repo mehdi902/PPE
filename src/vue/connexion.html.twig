@@ -3,16 +3,27 @@
 {% block title %} {{ parent() }} Se connecter {% endblock %}       
 
 {% block contenu %} 
+    
+    
+    <div class="card mx-auto" style="max-width: 80%; max-height:80%; margin-top: 2%">
+        <div class="card-header mx-auto" style="width: 100%; margin-bottom: 2%">
+            <h2 class="title mx-auto" style="max-width: 100%;max-height: 50%;   " >Connectez-vous sur LeNomDuSite</h2>
+        </div>
   
- <form class="form-signin" action="index.php?page=connexion" method="post" enctype="application/x-www-form-urlencoded">
-     <h1 class="h3 mb-3 font-weight-normal">Connectez-vous sur Site de vente</h1>      
-     <label for="inputEmail" class="sr-only">Email:</label>
-     <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" required autofocus>      
-     <label for="inputPassword" class="sr-only">Mot de passe:</label>      
-     <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Mot de passe" required>
-     <button class="btn btn-lg btn-primary btn-block" type="submit" name="btConnecter">Se connecter</button> 
-     <a href="index.php?page=inscrire">S'inscrire</a>
- </form>
+             <form class="form-signin" action="index.php?page=connexion" method="post" enctype="application/x-www-form-urlencoded" style="max-width: 100%;max-height: 50%;">
+
+                <label for="inputEmail" class="sr-only" >Email:</label>
+                <input type="email" id="inputEmail" name="inputEmail" class="form-control mx-auto" style="max-width: 80%;max-height: 50%; margin-bottom: 1%" placeholder="Email" required autofocus>      
+                <label for="inputPassword" class="sr-only">Mot de passe:</label>      
+                <input type="password" id="inputPassword" name="inputPassword" class="form-control mx-auto" style="max-width: 80%;max-height: 50%; " placeholder="Mot de passe" required>
+
+                <div class="card-footer mx-auto" style="max-width: 100%; margin-top: 2%">
+                    <button class="btn btn-lg btn-primary btn-block mx-auto" style="max-width: 40%;max-height: 50%; margin-bottom: 0.5% " type="submit" name="btConnecter">Se connecter</button> 
+                    <button type="button" class="btn btn-outline-primary mx-auto" style="max-width: 20%"><a style="max-width: 20%" href="index.php?page=inscrire">S'inscrire</a></button>                    
+                </div>
+
+
+             </form>
   
 {% endblock %}
 
