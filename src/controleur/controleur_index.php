@@ -46,3 +46,9 @@ function actionDeconnexion($twig){
     session_destroy();
     header("Location:index.php");
     }
+    
+    
+function actionProfil($twig){
+    echo $twig->render('profil.html.twig', array());
+    
+}
