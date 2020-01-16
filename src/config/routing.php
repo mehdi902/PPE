@@ -16,10 +16,12 @@ function getPage($db){
         $page = 'accueil';
         }
 
+
     $contenu = $lesPages[$page];
     }
 
     else{   $contenu = $lesPages['maintenance']; }
+
     
 return $contenu; 
 } ?>
