@@ -1,7 +1,9 @@
 
-<?php
-$config['serveur']='localhost:3306';
-$config['login'] = 'login4066';
-$config['mdp'] ='ZpOHhSeWUcUkAhG';
-$config['bd'] = 'dblogin4066'; 
-?>
+<?php  
+  $config['serveur']='localhost';
+  $config['login'] = 'login4057';
+  $config['mdp'] ='xCNWLJEjvaLqmTw';
+  $config['bd'] = 'dblogin4057';
+    
+
+

@@ -21,28 +21,31 @@
     {% else %}
         
 
-        <div class="card mx-auto" style="width: 1200px;">
+        <div class="card mx-auto" style="width: 80%; height:100%; margin-top: 2%">
             <div class="card-header ">
-                <h2 class="mx-auto" style="width: 200px">Inscription</h2>
+                <h2 class="mx-auto" style="width: 15%">Inscription</h2>
             </div>
-            <form class="form-signin mx-auto" style="width: 1200px;" action="index.php?page=inscrire" method="post" enctype="application/x-www-form-urlencoded">
-                <div class="card-body mx-auto" style="width: 1200px; height: 350px">
+            <form class="form-signin " action="index.php?page=inscrire" method="post" enctype="application/x-www-form-urlencoded">
+                <div class="card-body mx-auto" style="width: 70%; height: 70%">
                            
-                     <label for="inputEmail" class="sr-only mx-auto" style="width: 200px;" >Email:</label>
-                     <input type="email" id="inputEmail" name="inputEmail" class="form-control mx-auto" style="width: 1000px; height: 50px; margin-bottom: 10px" placeholder="Email" required autofocus>
+                     <label for="inputEmail" class="sr-only mx-auto" style="width: 20%;" >Email:</label>
+                     <input type="email" id="inputEmail" name="inputEmail" class="form-control mx-auto" style="width: 90%; height: 50%; margin-bottom: 1%" placeholder="Email" required autofocus>
                      <label for="inputPassword" class="sr-only mx-auto">Mot de passe:</label>      
-                     <input type="password" id="inputPassword" name="inputPassword" class="form-control mx-auto" style="width: 1000px; height: 50px; margin-bottom: 10px" placeholder="Mot de passe" required>
+                     <input type="password" id="inputPassword" name="inputPassword" class="form-control mx-auto" style="width: 90%; height: 50%; margin-bottom: 1%" placeholder="Mot de passe" required>
                      <label for="inputPassword2" class="sr-only mx-auto">Mot de passe:</label>  
-                     <input type="password" id="inputPassword2" name="inputPassword2" class="form-control mx-auto" style="width: 1000px; height: 50px; margin-bottom: 10px" placeholder="confirmation mot de passe" required>
+                     <input type="password" id="inputPassword2" name="inputPassword2" class="form-control mx-auto" style="width: 90%; height: 50%; margin-bottom: 1%" placeholder="confirmation mot de passe" required>
                      <label for="inputNom" class="sr-only mx-auto">Nom:</label>  
-                     <input type="text" id="nom" name="nom" class="form-control mx-auto" style="width: 1000px; height: 50px; margin-bottom: 10px" placeholder="Nom" required>
+                     <input type="text" id="nom" name="nom" class="form-control mx-auto" style="width: 90%; height: 50%; margin-bottom: 1%" placeholder="Nom" required>
                      <label for="inputPrenom" class="sr-only mx-auto">Prenom:</label>
-                     <input type="text" id="prenom" name="prenom" class="form-control mx-auto" style="width: 1000px; height: 50px; margin-bottom: 10px" placeholder="Prenom" required>
+                     <input type="text" id="prenom" name="prenom" class="form-control mx-auto" style="width: 90%; height: 50%; margin-bottom: 1%" placeholder="Prenom" required>
+                     <select class="custom-select" name="role" id="role"><option value="1">Administrateur</option><option value="2">utilisateur</option></select>
+
+                     
 
 
                 </div>
                 <div class="card-footer text-muted ">
-                    <h2 class="mx-auto" style="width: 200px"><button class="btn btn-lg btn-success mx-auto" style="width: 200px" type="submit" id="btInscrire" name="btInscrire">S'inscrire</button> </h2>
+                    <h2 class="mx-auto" style="width: 15%"><button class="btn btn-lg btn-success mx-auto" style="width: 75%" type="submit" id="btInscrire" name="btInscrire">S'inscrire</button> </h2>
             </form>
 
             
