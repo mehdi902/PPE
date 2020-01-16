@@ -8,6 +8,7 @@ require_once '../src/app/connexion.php';
 
 $loader = new Twig_Loader_Filesystem('../src/vue/');
 $twig = new Twig_Environment($loader, array());
+$twig->addGlobal('session', $_SESSION);
 $db = connect($config); 
 
 

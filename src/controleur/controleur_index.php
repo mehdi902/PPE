@@ -14,6 +14,8 @@ function actionInscription($twig){
         $inputEmail = $_POST['inputEmail'];
         $inputPassword = $_POST['inputPassword'];
         $inputPassword2 =$_POST['inputPassword2'];
+        $inputnom =$_POST['nom'];
+        $inputprenom =$_POST['prenom'];
         $role = $_POST['role'];
         $form['valide'] = true;
          if ($inputPassword!=$inputPassword2){
@@ -26,3 +28,21 @@ function actionInscription($twig){
         } 
     echo $twig->render('inscription.html.twig', array('form=>$form'));
 }
+
+function actionConnexion($twig){
+    $form = array();
+    $form['valide'] = true;
+    if (isset($_POST['btConnecter'])){
+        $inputEmail = $_POST['inputEmail'];
+        $inputPassword = $_POST['inputPassword'];
+        $_SESSION['login'] = $inputEmail;
+        $_SESSION['role'] = 1;
+        header("Location:index.php");
+        }
+    echo $twig->render('connexion.html.twig', array());
+}
+function actionDeconnexion($twig){
+    session_unset();
+    session_destroy();
+    header("Location:index.php");
+    }

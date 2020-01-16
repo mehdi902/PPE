@@ -4,6 +4,7 @@ function getPage($db){
     $lesPages['accueil'] = "actionAccueil";
     $lesPages['inscription'] = "actionInscription";
     $lesPages['maintenance'] = "actionMaintenance";
+    $lesPages['connexion'] = "actionConnexion";
     
 
     if ($db!=null){
