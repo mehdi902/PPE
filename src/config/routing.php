@@ -7,7 +7,8 @@ function getPage($db){
     $lesPages['connexion'] = "actionConnexion";
     $lesPages['profil'] = "actionProfil";    
     $lesPages['langage'] = "actionLangage"; 
-
+    $lesPages['developpeur'] = "actionDeveloppeur";
+    
     if ($db!=null){
     if(isset($_GET['page'])){
         $page = $_GET['page'];

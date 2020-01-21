@@ -2,18 +2,18 @@
 
 function actionLangage($twig, $db){
     $form = array();
-    $langage = new Langage ($db);
+    
     if(isset($_POST['btAjouterLangage'])){
         $inputLibelle = $_POST['inputLibelle'];
+        $libelle = new Libelle ($db);
 
-        $exec = $type->insert ($inputLibelle);
+        $exec = $libelle->insert ($inputLibelle);
         $form['libelle'] = $inputLibelle;
     }        
         
-        
-    $liste = $type->select();
+
     
-    echo $twig->render('langage.html.twig', array('form'=>$form,'liste'=>$liste));
+    echo $twig->render('langage.html.twig', array('form'=>$form));
 
 
 }

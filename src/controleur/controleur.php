@@ -1,8 +1,6 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+require_once 'controleur_développeur.php';
+require_once 'controleur_index.php';
+require_once 'controleur_langage.php';
+require_once 'controleur_mdp.php';

@@ -1,13 +1,13 @@
 <?php
-    class Langage{
+    class Libelle{
         private $db;
         private $insert;
-        private $select;
+
         
         public function __construct($db){
             $this->db=$db;
             $this->insert=$db->prepare("insert into langage (libelle) values(:libelle)");
-            $this->select = $db->prepare("select libelle from langage order by libelle ");
+
            
         }
         public function insert($libelle){

@@ -59,7 +59,9 @@ function actionProfil($twig){
     
 }
 
-function actionLangage($twig) {
-    echo $twig->render('langage.html.twig',array());
+
+
+function actionDeveloppeur($twig) {
+    echo $twig->render('developpeur.html.twig',array());
 
 }
