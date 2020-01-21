@@ -10,7 +10,6 @@ function actionMaintenance($twig) {
 }
 
 function actionInscription($twig,$db){
-    $form = array();
     if (isset($_POST['btInscrire'])){
         $inputEmail = $_POST['inputEmail'];
         $inputPassword = $_POST['inputPassword'];
@@ -19,19 +18,14 @@ function actionInscription($twig,$db){
         $inputprenom =$_POST['prenom'];
         $role = $_POST['role'];
         $form['valide'] = true;
-        $form['email'] = $inputEmail;
-        $form['role'] = $role;
-        
          if ($inputPassword!=$inputPassword2){
              $form['valide'] = false;
          $form['message'] = 'Les mots de passe sont différents';}
          else{
                  $utilisateur = new Utilisateur($db);
-                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $inputnom, $inputprenom);
-                 if (!$exec){
-                     $form['valide'] = false;
-                     $form['message'] = 'Problème d\'insertion dans la table utilisateur ';}
+                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $nom, $prenom);        if (!$exec){          $form['valide'] = false;            $form['message'] = 'Problème d\'insertion dans la table utilisateur ';          }
              }
+
         $form['email'] = $inputEmail;
         $form['role'] = $role;
         
@@ -43,12 +37,10 @@ function actionInscription($twig,$db){
 
 function actionConnexion($twig){
     $form = array();
-    
+    $form['valide'] = true;
     if (isset($_POST['btConnecter'])){
         $inputEmail = $_POST['inputEmail'];
         $inputPassword = $_POST['inputPassword'];
-        $role = $_POST['role'];
-        $form['valide'] = true;
         $_SESSION['login'] = $inputEmail;
         $_SESSION['role'] = 1;
         header("Location:index.php");
@@ -65,4 +57,9 @@ function actionDeconnexion($twig){
 function actionProfil($twig){
     echo $twig->render('profil.html.twig', array());
     
+}
+
+function actionLangage($twig) {
+    echo $twig->render('langage.html.twig',array());
+
 }
