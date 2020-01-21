@@ -5,6 +5,7 @@ function getPage($db){
     $lesPages['inscription'] = "actionInscription";
     $lesPages['maintenance'] = "actionMaintenance";
     $lesPages['connexion'] = "actionConnexion";
+    $lesPages['deconnexion'] = "actionDeconnexion";
     
 
     if ($db!=null){
