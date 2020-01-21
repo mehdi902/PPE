@@ -10,12 +10,8 @@ function actionMaintenance($twig) {
 }
 
 function actionInscription($twig,$db){
-
-    $form = array();
-    
-
+    $form=array();
     if (isset($_POST['btInscrire'])){
-        
         $inputEmail = $_POST['inputEmail'];
         $inputPassword = $_POST['inputPassword'];
         $inputPassword2 =$_POST['inputPassword2'];
@@ -28,7 +24,11 @@ function actionInscription($twig,$db){
          $form['message'] = 'Les mots de passe sont différents';}
          else{
                  $utilisateur = new Utilisateur($db);
-                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $nom, $prenom);        if (!$exec){          $form['valide'] = false;            $form['message'] = 'Problème d\'insertion dans la table utilisateur ';          }
+                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $inputnom, $inputprenom);
+                 if (!$exec){
+                     $form['valide'] = false;
+                     $form['message'] = 'Problème d\'insertion dans la table utilisateur ';
+                     }
              }
 
         $form['email'] = $inputEmail;
@@ -40,36 +40,6 @@ function actionInscription($twig,$db){
     echo $twig->render('inscription.html.twig', array('form'=>$form));
 }
 
-
-
-function actionConnexion($twig,$db){
-        $form = array();
-        
-        if (isset($_POST['btConnecter'])){
-            $form['valide'] = true;
-            $inputEmail = $_POST['inputEmail'];
-            $inputPassword = $_POST['inputPassword'];
-            $utilisateur = new Utilisateur($db);
-            $unUtilisateur = $utilisateur->connect($inputEmail);
-            if ($unUtilisateur!=null){
-                if(!password_verify($inputPassword,$unUtilisateur['mdp'])){
-                    $form['valide'] = false;
-                    $form['message'] = 'Login ou mot de passe incorrect';
-                    }
-                    else{
-                        $_SESSION['login'] = $inputEmail;
-                        $_SESSION['role'] = $unUtilisateur['idRole'];
-                        header("Location:index.php");
-                        }
-                        }
-                        else{
-                            $form['valide'] = false;
-                            $form['message'] = 'Login ou mot de passe incorrect';
-                            }    }
-                            echo $twig->render('connexion.html.twig', array('form'=>$form));
-                            }
-                            
-                            
 function actionConnexion($twig){
     $form = array();
     $form['valide'] = true;
@@ -82,7 +52,6 @@ function actionConnexion($twig){
         }
     echo $twig->render('connexion.html.twig', array());
 }
-
 function actionDeconnexion($twig){
     session_unset();
     session_destroy();
