@@ -18,6 +18,14 @@ function actionInscription($twig,$db){
         $inputprenom =$_POST['prenom'];
         $role = $_POST['role'];
         $form['valide'] = true;
+        $to      = 'antoine.dumont2@epsi.fr';
+        $subject = 'inscription';
+        $message = 'vous êtes inscrit';
+        $headers = 'From: antoine.dumont99@gmail.com' . "\r\n" .
+        'Reply-To: antoine.dumont99@gmail.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+        mail($to, $subject, $message, $headers);
          if ($inputPassword!=$inputPassword2){
              $form['valide'] = false;
          $form['message'] = 'Les mots de passe sont différents';}
