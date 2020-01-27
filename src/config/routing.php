@@ -8,7 +8,8 @@ function getPage($db){
     $lesPages['deconnexion'] = "actionDeconnexion";
     $lesPages['profil'] = "actionProfil";    
     $lesPages['langage'] = "actionLangage"; 
-
+    $lesPages['developpeur'] = "actionDeveloppeur";
+    
 
     if ($db!=null){
     if(isset($_GET['page'])){

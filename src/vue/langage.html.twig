@@ -4,28 +4,36 @@
 
 {% block contenu %} 
 
-        <h1>Ajout des Langages</h1>  
-        <div class="panel panel-default"> 
         
-        <div class="table-responsive"> 
-            <table class="table table-hover table-striped">
-                <tr><th>Langages</th></tr>
+    <div class="card-body mx-auto" style="width: 70%; height: 70%">
+            <h1>Ajout des Langages</h1>  
+            <div class="panel panel-default"> 
 
-                {% for p in liste %}
+            <div class="table-responsive border"> 
+                <table class="table table-hover table-striped border-bottom">
+                    <tr><th>Langages</th></tr>
 
-                <tr><td>  </td></tr> <div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td></tr>
+                    {% for p in liste %}
 
-                {% endfor %}    
-            </table>
-        </div>
-    </div>    
- 
+                    <tr><td>  </td></tr> <div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td></tr>
+
+                    {% endfor %}    
+                </table>
+            </div>
+        </div>    
+    </div>
             
           
         <form class="form-signin" action="index.php?page=langage" method="post" enctype="application/x-www-form-urlencoded">
+<<<<<<< HEAD
             <div class="card-body mx-auto" style="width: 80%; height:100%; margin-top: 2%">
                 <label for="inputLangage" class="sr-only">Langage :</label>
                 <input type="text" id="inputDesignation" name="inputLangage" class="form-control" placeholder="Langage" required autofocus>
+=======
+            <div class="card-body mx-auto" style="width: 70%; height:100%; margin-top: 2%">
+                <label for="inputLibelle" class="sr-only">Langage :</label>
+                <input type="text" id="inputLibelle" name="inputLibelle" class="form-control" placeholder="Langage" required autofocus>
+>>>>>>> bdd
 
                 <div class ="card-Footer mx-auto" style="width: 100%; height:50%; " >
                 <button class="btn btn-lg btn-primary btn-block mx-auto" style="width: 30%; height:80%; margin-top: 1%" type="submit" name="btAjouterLangage" id="btEnvoyer">Ajouter</button>

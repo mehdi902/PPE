@@ -7,12 +7,10 @@
         
         public function __construct($db){
             $this->db=$db;
-
             $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,idrole) values(:email,:mdp,:nom,:prenom,:idrole)");
             $this->connect = $db->prepare("select email, idRole, mdp from utilisateur where email=:email");
-
-
             $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,role) values(:email,:mdp,nom,prenom,:role)");
+
 
            
         }
