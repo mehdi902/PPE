@@ -20,10 +20,10 @@ function actionInscription($twig,$db){
         $role = $_POST['role'];
         $form['valide'] = true;
         $to  = $_POST['inputEmail']; // notez la virgule
-
+        
      // Sujet
      $subject = 'Bienvenu';
-
+    
      // message
      $message = '
      <html>
