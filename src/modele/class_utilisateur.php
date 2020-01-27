@@ -3,10 +3,14 @@
     class Utilisateur{
         private $db;
         private $insert;
+        private $connect;
         
         public function __construct($db){
             $this->db=$db;
-            $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,role) values(:email,:mdp,nom,prenom,:role)");
+            $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,idrole) values(:email,:mdp,:nom,:prenom,:idrole)");
+            $this->connect = $db->prepare("select email, idRole, mdp from utilisateur where email=:email");
+
+
            
         }
         public function insert($email, $mdp, $role, $nom, $prenom){
@@ -17,5 +21,11 @@
                 $r=false;}
                 return $r;
                 }
+        public function connect($email){
+            $unUtilisateur = $this->connect->execute(array(':email'=>$email));
+            if ($this->connect->errorCode()!=0){
+                print_r($this->connect->errorInfo());
+                }
+                return $this->connect->fetch();} 
     }
 

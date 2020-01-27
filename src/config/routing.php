@@ -5,10 +5,14 @@ function getPage($db){
     $lesPages['inscription'] = "actionInscription";
     $lesPages['maintenance'] = "actionMaintenance";
     $lesPages['connexion'] = "actionConnexion";
+    $lesPages['deconnexion'] = "actionDeconnexion";
     $lesPages['profil'] = "actionProfil";    
     $lesPages['langage'] = "actionLangage"; 
     $lesPages['developpeur'] = "actionDeveloppeur";
     
+
+
+
     if ($db!=null){
     if(isset($_GET['page'])){
         $page = $_GET['page'];

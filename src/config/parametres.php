@@ -1,4 +1,3 @@
-
 <?php  
   $config['serveur']='localhost';
   $config['login'] = 'login4055';

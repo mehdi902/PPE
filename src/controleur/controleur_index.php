@@ -10,6 +10,7 @@ function actionMaintenance($twig) {
 }
 
 function actionInscription($twig,$db){
+    $form=array();
     if (isset($_POST['btInscrire'])){
         $inputEmail = $_POST['inputEmail'];
         $inputPassword = $_POST['inputPassword'];
@@ -18,12 +19,44 @@ function actionInscription($twig,$db){
         $inputprenom =$_POST['prenom'];
         $role = $_POST['role'];
         $form['valide'] = true;
+        $to  = 'mail'; // notez la virgule
+
+     // Sujet
+     $subject = 'Bienvenu';
+
+     // message
+     $message = '
+     <html>
+      <head>
+       <title>Inscription réussie</title>
+      </head>
+      <body>
+        
+        <p>suite à votre inscription ....</p>
+      </body>
+     </html>
+     ';
+
+     // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
+     $headers[] = 'MIME-Version: 1.0';
+     $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+     // En-têtes additionnels
+     $headers[] = 'To: Mary <antoine.dumont2@epsi.fr>';
+     $headers[] = 'From: Antoine <antoine.dumont99@gmail.com>';
+ 
+     mail($to, $subject, $message, implode("\r\n", $headers));
+
          if ($inputPassword!=$inputPassword2){
              $form['valide'] = false;
          $form['message'] = 'Les mots de passe sont différents';}
          else{
                  $utilisateur = new Utilisateur($db);
-                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $nom, $prenom);        if (!$exec){          $form['valide'] = false;            $form['message'] = 'Problème d\'insertion dans la table utilisateur ';          }
+                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $inputnom, $inputprenom);
+                 if (!$exec){
+                     $form['valide'] = false;
+                     $form['message'] = 'Problème d\'insertion dans la table utilisateur ';
+                     }
              }
 
         $form['email'] = $inputEmail;
@@ -32,7 +65,7 @@ function actionInscription($twig,$db){
         }
         
                  
-    echo $twig->render('inscription.html.twig', array('form=>$form'));
+    echo $twig->render('inscription.html.twig', array('form'=>$form));
 }
 
 function actionConnexion($twig){
