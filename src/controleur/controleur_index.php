@@ -19,7 +19,7 @@ function actionInscription($twig,$db){
         $inputprenom =$_POST['prenom'];
         $role = $_POST['role'];
         $form['valide'] = true;
-        $to  = 'mail'; // notez la virgule
+        $to  = $_POST['inputEmail'] ; // notez la virgule
 
      // Sujet
      $subject = 'Bienvenu';
@@ -39,11 +39,11 @@ function actionInscription($twig,$db){
 
      // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
      $headers[] = 'MIME-Version: 1.0';
-     $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+     $headers[] = 'Content-type: text/html; charset=utf-8';
 
      // En-têtes additionnels
-     $headers[] = 'To: Mary <antoine.dumont2@epsi.fr>';
-     $headers[] = 'From: Antoine <antoine.dumont99@gmail.com>';
+     $headers[] = 'To:'.$_POST['inputEmail'];
+     $headers[] = 'From: Nom du site';
  
      mail($to, $subject, $message, implode("\r\n", $headers));
 
