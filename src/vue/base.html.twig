@@ -17,13 +17,29 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="index.php">LeNomDuSite</a>
-
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            
+                {%if session.login is defined %}
+                    {%if session.role == 1 %}
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Administration
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="index.php?page=langage">Gestion Langages</a>
+                            <a class="dropdown-item" href="index.php?page=developpeur">Gestion Développeurs</a>
+                          </div>
+
+
+                    {% endif %}
+                {% endif %}
+                </div>
+                
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php?page=profil">Profil <span class="sr-only">(current)</span></a>
-                    </li>
+                    </li>                  
                     <li class="nav-item">
                         <a class="nav-link " href="index.php?page=langage" aria-disabled="false">Langage</a>
                     </li>
