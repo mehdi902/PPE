@@ -13,9 +13,9 @@
 
            
         }
-        public function insert($email, $mdp, $role, $nom, $prenom){
+        public function insert($email, $mdp, $idrole, $nom, $prenom){
             $r = true;
-            $this->insert->execute(array(':email'=>$email, ':mdp'=>$mdp, ':role'=>$role, ':nom'=>$nom, ':prenom'=>$prenom));
+            $this->insert->execute(array(':email'=>$email, ':mdp'=>$mdp, ':idrole'=>$idrole, ':nom'=>$nom, ':prenom'=>$prenom));
             if ($this->insert->errorCode()!=0){
                 print_r($this->insert->errorInfo());
                 $r=false;}

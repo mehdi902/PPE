@@ -19,10 +19,11 @@ function actionInscription($twig,$db){
         $inputprenom =$_POST['prenom'];
         $role = $_POST['role'];
         $form['valide'] = true;
+        
         $to  = $_POST['inputEmail'] ; // notez la virgule
 
      // Sujet
-     $subject = 'Bienvenu';
+     $subject = 'Bienvenue';
 
      // message
      $message = '
@@ -42,7 +43,7 @@ function actionInscription($twig,$db){
      $headers[] = 'Content-type: text/html; charset=utf-8';
 
      // En-têtes additionnels
-     $headers[] = 'To:'.$_POST['inputEmail'];
+     
      $headers[] = 'From: Nom du site';
  
      mail($to, $subject, $message, implode("\r\n", $headers));
