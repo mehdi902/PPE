@@ -17,20 +17,29 @@
         {% endif %}
     {% else %}
 
+        
+        
+        <div class="card mx-auto" style="width: 80%; height:100%; margin-top: 2%">
+
         <form class="form-signin" action="index.php?page=connexion" method="post" enctype="application/x-www-form-urlencoded" style="max-width: 100%;max-height: 50%;">
-
-                <label for="inputEmail" class="sr-only" >Email:</label>
-                <input type="email" id="inputEmail" name="inputEmail" class="form-control mx-auto" style="max-width: 80%;max-height: 50%; margin-bottom: 1%" placeholder="Email" required autofocus>      
-                <label for="inputPassword" class="sr-only">Mot de passe:</label>      
-                <input type="password" id="inputPassword" name="inputPassword" class="form-control mx-auto" style="max-width: 80%;max-height: 50%; " placeholder="Mot de passe" required>
-
-                <div class="card-footer mx-auto" style="max-width: 100%; margin-top: 2%">
-                    <button class="btn btn-lg btn-primary btn-block mx-auto" style="max-width: 40%;max-height: 50%; margin-bottom: 0.5% " type="submit" name="btConnecter">Se connecter</button> 
-                    <button type="button" class="btn btn-outline-primary mx-auto" style="max-width: 20%"><a style="max-width: 20%" href="index.php?page=inscription">S'inscrire</a></button>                    
+                <div class="card-header mx-auto" style="width: 100%; height: 50%">
+                    <h1> Connectez-vous </h1>
                 </div>
+                <div class="card-body mx-auto" style="width: 80%; height: 80%">                
+                    <label for="inputEmail" class="sr-only" >Email:</label>
+                    <input type="email" id="inputEmail" name="inputEmail" class="form-control mx-auto" style="max-width: 80%;max-height: 50%; margin-bottom: 1%" placeholder="Email" required autofocus>      
+                    <label for="inputPassword" class="sr-only">Mot de passe:</label>      
+                    <input type="password" id="inputPassword" name="inputPassword" class="form-control mx-auto" style="max-width: 80%;max-height: 50%; " placeholder="Mot de passe" required>
+                </div>
+                <div class="card-footer mx-auto" style="max-width: 100%; margin-top: 2%">
+                    <button class="btn btn-lg btn-primary btn-block mx-auto" style="max-width: 30%;max-height: 50%; margin-bottom: 0.5% " type="submit" name="btConnecter">Se connecter</button> 
+                    <div class="list-group" style='max-width: 10%;max-height: 3%;margin-left: 1%; margin-top: 1%'>
+                        <a href="index.php?page=inscription" class="list-group-item list-group-item-action active mx-auto" style="max-width: 75% "> S'inscrire </a>
+                    </div>
+                </div>
+        </div>
 
-
-             </form>
+           
     {% endif %}
 
     

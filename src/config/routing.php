@@ -1,6 +1,7 @@
 <?php
 
 function getPage($db){
+
     $lesPages['accueil'] = "actionAccueil;0";
     $lesPages['inscription'] = "actionInscription;0";
     $lesPages['maintenance'] = "actionMaintenance;0";
@@ -9,6 +10,7 @@ function getPage($db){
     $lesPages['profil'] = "actionProfil;0";    
     $lesPages['langage'] = "actionLangage;0"; 
     $lesPages['utilisateur'] = "actionUtilisateur;1";
+    $lesPages['developpeur'] = "actionDeveloppeur;1";
     
 
 
@@ -42,6 +44,7 @@ function getPage($db){
             } else {
                 $contenu = $explose[0];
             }
+
         }
 
 

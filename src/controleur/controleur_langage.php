@@ -1,8 +1,19 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+function actionLangage($twig, $db){
+    $form = array();
+    
+    if(isset($_POST['btAjouterLangage'])){
+        $inputLibelle = $_POST['inputLibelle'];
+        $libelle = new Libelle ($db);
 
+        $exec = $libelle->insert ($inputLibelle);
+        $form['libelle'] = $inputLibelle;
+    }        
+        
+
+    
+    echo $twig->render('langage.html.twig', array('form'=>$form));
+
+
+}
