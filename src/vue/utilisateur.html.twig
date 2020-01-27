@@ -10,7 +10,7 @@
                 <th>Rôle</th>
            </tr>
  
-  {% for u in liste %}          <tr><td>{{u.email}}</td><td>{{u.nom}}</td><td>{{u.prenom}}</td><td>{{u.libellerole}}</td ><td> <div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td></tr> 
+  {% for utilisateur in liste %}          <tr><td>{{utilisateur.email}}</td><td>{{utilisateur.nom}}</td><td>{{utilisateur.prenom}}</td><td>{{utilisateur.libellerole}}</td ><td> <div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td></tr> 
  
   {% endfor %}    
   </table>  </div> </div>

@@ -8,7 +8,8 @@ function getPage($db){
     $lesPages['deconnexion'] = "actionDeconnexion;0";
     $lesPages['profil'] = "actionProfil;0";    
     $lesPages['langage'] = "actionLangage;0"; 
-    $lesPages['utilisateur'] = "actionUtilisateur";
+    $lesPages['utilisateur'] = "actionUtilisateur;1";
+    
 
 
     if ($db != null) {
@@ -45,9 +46,8 @@ function getPage($db){
 
 
          else {
-        $contenu = $lesPages[$page];
     
-        $contenu = $lesPages['maintenance'];
+        $contenu = 'actionMaintenance';
     }
 
 
