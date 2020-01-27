@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Jeu 16 Janvier 2020 à 10:27
+-- Généré le :  Lun 27 Janvier 2020 à 10:10
 -- Version du serveur :  10.1.41-MariaDB-0+deb9u1
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
@@ -27,7 +27,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `codage` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `idlangage` int(11) NOT NULL,
+  `iddeveloppeur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -37,8 +39,7 @@ CREATE TABLE `codage` (
 --
 
 CREATE TABLE `developpeur` (
-  `id` int(11) NOT NULL,
-  `idcodage` int(11) NOT NULL
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -49,8 +50,7 @@ CREATE TABLE `developpeur` (
 
 CREATE TABLE `langage` (
   `id` int(11) NOT NULL,
-  `libelle` varchar(50) NOT NULL,
-  `idcodage` int(11) NOT NULL
+  `libelle` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -92,11 +92,15 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`idrole`, `nom`, `prenom`, `email`, `mdp`, `iddeveloppeur`) VALUES
-(1, 'aze', 'aze', 'azeeeaaa@gmail', '$2y$10$4h7osfqk.Qwu7zr9aOusKuU5849WPFgnlF8bwe9tYE6d1u.fjNCem', 0),
-(1, 'aze', 'aze', 'azerrsdxdf@gm', '$2y$10$f6WB.YbMMV.8FTvtVslsW.N2AWqGnM581hxP.bsneS/7s6Qz4xrpi', 0),
-(1, 'aze', 'aze', 'dsde@gfeke', '$2y$10$UlVZ0wLn5GRCa/u6K2dZ1.ar9dVs8foIFl/q5v2A3A3UeDbUrPwcS', 0),
-(1, 'aze', 'aze', 'mehditimmerman915@gmail.com', '$2y$10$B37hn3c96zPJRyknGHIYieU/PLTAfkNgs4BK10xSoFsGa8ArVuf/S', 0),
-(1, 'zer', 'zer', 'zer@mgg', '$2y$10$jWTLg8flESHaqYXKDlZUyut27PcIShJR706rhTL7h2syDb42oUZre', 0);
+(1, 'mehdi', 'timmerman', 'mehditimmerman@gmail.com', '$2y$10$pIWwyzNteo0Kz4UlOlCwluuVoeUikqsQeyZTmRTdvESaLj6xvJQ2W', 0),
+(1, 'aze', 'aze', 'mpkohfdjogk@fff', '$2y$10$PEkzd8YL8NXbaFh9h2NQNuE7SkbDQ1T8wXQ.cXCEfikwUeL3VScLy', 0),
+(1, 'aze', 'aze', 'plllllptkpyghk@gmail', '$2y$10$9MtlUlc7Kql0tlNrrOnJ6O5QB3NHPxYgN6nc0fl0zJtLyrnNrMWCO', 0),
+(1, 'zzzzz', 'zzzzz', 'test2@gm', '$2y$10$f9LYf2ejGefJc1VnLw1nsewECnYMgXjzWMahe7qLzYd3m.SqxyItW', 0),
+(1, 'aze', 'aze', 'test@gmail', '$2y$10$hrC9XXgRwENvb05UpSPATe4NXQ/5PCOvRe9Xqw3U2KzyhST27UEYC', 0),
+(1, 'toto', 'toto', 'toto1@gmail.com', '$2y$10$BXStGbOQngKSUZ5UQVm34OLwc4pIs7Xrais8rVKcX0vxXi0/y3Mim', 0),
+(1, 'aze', 'aze', 'toto@gmail.com', '$2y$10$5Eznfs3SX5FHhUaiATHYCe1WSElpbSxyMwR4u/pdTQH/cOD9XYmHy', 0),
+(1, 'aze', 'aze', 'totoooooooo@gmail', '$2y$10$3YGyM/RVrCS878IZyP4sVO.X61tnCLY2yy25CLhyUSpdePc4at5sG', 0),
+(1, 'aze', 'aze', 'tsssssss@ggg', '$2y$10$CkCIBfea7hBpreL77JGWWOeWaljtjZlwzDhNVfN21PYiLAoAII4.q', 0);
 
 --
 -- Index pour les tables exportées
@@ -106,21 +110,21 @@ INSERT INTO `utilisateur` (`idrole`, `nom`, `prenom`, `email`, `mdp`, `iddevelop
 -- Index pour la table `codage`
 --
 ALTER TABLE `codage`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idlangage` (`idlangage`),
+  ADD KEY `iddeveloppeur` (`iddeveloppeur`);
 
 --
 -- Index pour la table `developpeur`
 --
 ALTER TABLE `developpeur`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idcodage` (`idcodage`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `langage`
 --
 ALTER TABLE `langage`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idcodage` (`idcodage`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `role`
@@ -160,16 +164,11 @@ ALTER TABLE `role`
 --
 
 --
--- Contraintes pour la table `developpeur`
+-- Contraintes pour la table `codage`
 --
-ALTER TABLE `developpeur`
-  ADD CONSTRAINT `developpeur_ibfk_2` FOREIGN KEY (`idcodage`) REFERENCES `codage` (`id`);
-
---
--- Contraintes pour la table `langage`
---
-ALTER TABLE `langage`
-  ADD CONSTRAINT `langage_ibfk_1` FOREIGN KEY (`idcodage`) REFERENCES `codage` (`id`);
+ALTER TABLE `codage`
+  ADD CONSTRAINT `codage_ibfk_1` FOREIGN KEY (`idlangage`) REFERENCES `langage` (`id`),
+  ADD CONSTRAINT `codage_ibfk_2` FOREIGN KEY (`iddeveloppeur`) REFERENCES `developpeur` (`id`);
 
 --
 -- Contraintes pour la table `utilisateur`

@@ -4,11 +4,13 @@
         private $db;
         private $insert;
         private $connect;
+        private $select;
         
         public function __construct($db){
             $this->db=$db;
             $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,idrole) values(:email,:mdp,:nom,:prenom,:idrole)");
             $this->connect = $db->prepare("select email, idRole, mdp from utilisateur where email=:email");
+            $this->select = $db->prepare("select email, idRole, nom, prenom, mdp  from utilisateur, role  where utilisateur.idrole = role.id order by nom");
 
 
            
@@ -26,6 +28,13 @@
             if ($this->connect->errorCode()!=0){
                 print_r($this->connect->errorInfo());
                 }
-                return $this->connect->fetch();} 
+                return $this->connect->fetch();}
+                
+        public function select(){
+            $liste = $this->select->execute();
+            if ($this->select->errorCode()!=0){
+                print_r($this->select->errorInfo());}
+                return $this->select->fetchAll();
+                }
     }
 
