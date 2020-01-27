@@ -33,11 +33,20 @@
                     <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=inscrire">Retourner sur la page d'inscription</a></h1>
                 {% endif %}
         </div>
+        </div>
 
+        
+            <div class="card mx-auto" style="max-height: 50%; max-width: 80%; margin-top: 15%">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 50%"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        
+        
     {% else %}
         
 
-        <div class="card mx-auto" style="width: 80%; height:100%; margin-top: 2%">
+        <div class="card mx-auto" style="width: 80%; height:100%; margin-top: 2%; margin-bottom: 3%">
 
             <div class="card-header ">
                 <h2 class="mx-auto" style="width: 100%">Inscription</h2>
@@ -69,6 +78,10 @@
 
         </div>        
     </div>
-
+        <div class="progress card mx-auto" style="max-height: 50%;max-width: 80%">
+            <div class="card-body" style="margin-left: 5%; margin-right: 5%; width: 80%; height: 20%">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 10%;height: 50%; margin-top: 3%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
 {% endif %}
 {% endblock %} 
