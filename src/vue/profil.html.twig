@@ -5,38 +5,49 @@
 
 
 {% block contenu %} 
-    
+
     <div class="mx-auto" style="width: 20rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Identifiant</h5>
-    <a href="#" class="btn btn-primary">Changer image de profil</a>
-  </div>
-</div>
-    
-   <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"></th>
-      <td>Identifiant</td>
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td>Email</td>
+        <img src="..." class="img-fluid" alt="Responsive image"> 
+        <div class="card-body">
+            <h5 class="card-title">Identifiant</h5>
+            <a href="#" class="btn btn-primary">Changer image de profil</a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-light">
+                
+                <tr>
+                    <th scope="col">Identifiant</th>
 
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in liste %}
+                    <tr>  
+                        <td>{{ u.nom }} {{ u.prenom }}</td>
 
-    </tr>
-  </tbody>
-</table>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in liste %}
+                    <tr>  
+                        <td>{{ u.email}}</td>
+
+                    </tr>
+                {% endfor %}
+
+        </table>
+    </div>
     
-{% endblock %}
+    
+    
+    {% endblock %}
