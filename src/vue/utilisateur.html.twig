@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block contenu %}
+<div class="panel panel-default">
+      <div class="panel-heading">Liste des utilisateurs</div>
+   <div class="table-responsive">
+       <table class="table table-hover table-striped">
+           <tr><th>Email</th>
+               <th>Nom</th>
+                <th>Prénom</th>
+                <th>Rôle</th>
+           </tr>
+ 
+  {% for u in liste %}          <tr><td>{{u.email}}</td><td>{{u.nom}}</td><td>{{u.prenom}}</td><td>{{u.libellerole}}</td ><td> <div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td></tr> 
+ 
+  {% endfor %}    
+  </table>  </div> </div>
+  {% endblock %}
