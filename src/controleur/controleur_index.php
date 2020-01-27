@@ -19,6 +19,34 @@ function actionInscription($twig,$db){
         $inputprenom =$_POST['prenom'];
         $role = $_POST['role'];
         $form['valide'] = true;
+        $to  = 'mail'; // notez la virgule
+
+     // Sujet
+     $subject = 'Bienvenu';
+
+     // message
+     $message = '
+     <html>
+      <head>
+       <title>Inscription réussie</title>
+      </head>
+      <body>
+        
+        <p>suite à votre inscription ....</p>
+      </body>
+     </html>
+     ';
+
+     // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
+     $headers[] = 'MIME-Version: 1.0';
+     $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+     // En-têtes additionnels
+     $headers[] = 'To: Mary <antoine.dumont2@epsi.fr>';
+     $headers[] = 'From: Antoine <antoine.dumont99@gmail.com>';
+ 
+     mail($to, $subject, $message, implode("\r\n", $headers));
+
          if ($inputPassword!=$inputPassword2){
              $form['valide'] = false;
          $form['message'] = 'Les mots de passe sont différents';}
