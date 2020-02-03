@@ -21,7 +21,7 @@ function actionInscription($twig,$db){
         $form['valide'] = true;
         
         $to  = $_POST['inputEmail'] ; // notez la virgule
-        $adresse='http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=profil';
+        $adresse='http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=validation-email';
      // Sujet
      $subject = 'Bienvenue';
 
@@ -33,8 +33,8 @@ function actionInscription($twig,$db){
       </head>
       <body>
         
-        <p>suite à votre inscription ....</p>
-        <a href="'.$adresse.'">validation de votre inscription</a>
+        <p>Bonjour '.$inputprenom.' '.$inputnom.', Merci pour votre inscription à Nomdusite. Pour activer votre compte, veuillez utiliser le code suivant.</p>
+        <a href="'.$adresse.'">cliquez ici</a>
         
       </body>
      </html>
