@@ -21,7 +21,7 @@ function actionInscription($twig,$db){
         $form['valide'] = true;
         
         $to  = $_POST['inputEmail'] ; // notez la virgule
-
+        $adresse='http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=profil';
      // Sujet
      $subject = 'Bienvenue';
 
@@ -34,6 +34,8 @@ function actionInscription($twig,$db){
       <body>
         
         <p>suite à votre inscription ....</p>
+        <a href="'.$adresse.'">validation de votre inscription</a>
+        
       </body>
      </html>
      ';

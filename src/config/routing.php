@@ -11,7 +11,7 @@ function getPage($db){
     $lesPages['langage'] = "actionLangage;0"; 
     $lesPages['utilisateur'] = "actionUtilisateur;1";
     $lesPages['developpeur'] = "actionDeveloppeur;1";
-    
+    $lesPages['validation-email'] = "actionValidation;0";
 
 
     if ($db != null) {
