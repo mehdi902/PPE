@@ -36,6 +36,7 @@ function actionInscription($twig,$db){
         
         <p>Bonjour '.$inputprenom.' '.$inputnom.', Merci pour votre inscription à Nomdusite. Pour activer votre compte, veuillez utiliser le code suivant.</p>
         <p>'.$code.'</p>
+        <p>'.$code.'</p>
         <a href="'.$adresse.'">cliquez ici</a>
         
       </body>
@@ -57,7 +58,7 @@ function actionInscription($twig,$db){
          $form['message'] = 'Les mots de passe sont différents';}
          else{
                  $utilisateur = new Utilisateur($db);
-                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $inputnom, $inputprenom);
+                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $inputnom, $inputprenom, $code);
                  if (!$exec){
                      $form['valide'] = false;
                      $form['message'] = 'Problème d\'insertion dans la table utilisateur ';
