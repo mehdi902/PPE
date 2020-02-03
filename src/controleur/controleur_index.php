@@ -19,6 +19,8 @@ function actionInscription($twig,$db){
         $inputprenom =$_POST['prenom'];
         $role = $_POST['role'];
         $form['valide'] = true;
+        $dateinscription = $_POST['date'];
+
         
         $to  = $_POST['inputEmail'] ; // notez la virgule
         $adresse='http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=profil';
