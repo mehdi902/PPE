@@ -13,9 +13,9 @@
                 <table class="table table-hover table-striped border-bottom">
                     <tr><th>Langages</th></tr>
 
-                    {% for p in liste %}
+                    {% for langage in liste %}
 
-                    <tr><td>  </td></tr> <div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td></tr>
+                    <tr><td>{{ langage.libelle }}  </td></tr> <div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td></tr>
 
                     {% endfor %}    
                 </table>

@@ -19,6 +19,7 @@ function actionInscription($twig,$db){
         $inputprenom =$_POST['prenom'];
         $role = $_POST['role'];
         $form['valide'] = true;
+        $code = uniqid();
         
         $to  = $_POST['inputEmail'] ; // notez la virgule
         $adresse='http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=validation-email';
@@ -34,6 +35,7 @@ function actionInscription($twig,$db){
       <body>
         
         <p>Bonjour '.$inputprenom.' '.$inputnom.', Merci pour votre inscription à Nomdusite. Pour activer votre compte, veuillez utiliser le code suivant.</p>
+        <p>'.$code.'</p>
         <a href="'.$adresse.'">cliquez ici</a>
         
       </body>
