@@ -1,12 +1,14 @@
 <?php
-    class Libelle{
+    class Langage{
         private $db;
         private $insert;
+        private $select;
 
         
         public function __construct($db){
             $this->db=$db;
             $this->insert=$db->prepare("insert into langage (libelle) values(:libelle)");
+            $this->select=$db->prepare("select libelle from langage order by libelle");
 
            
         }
@@ -18,5 +20,13 @@
                 $r=false;}
                 return $r;
                 }
+                
+        public function select(){
+            $r = true;
+            $this->select->execute();
+            if ($this->select->errorCode()!=0){
+                print_r($this->select->errorInfo());}
+                return $this->select->fetchAll();
+        }
         }
  
