@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Lun 27 Janvier 2020 à 10:10
+-- Généré le :  Lun 03 Février 2020 à 08:55
 -- Version du serveur :  10.1.41-MariaDB-0+deb9u1
 -- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
@@ -53,6 +53,23 @@ CREATE TABLE `langage` (
   `libelle` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Contenu de la table `langage`
+--
+
+INSERT INTO `langage` (`id`, `libelle`) VALUES
+(1, 'PHP'),
+(4, 'python'),
+(5, 'python'),
+(6, 'asics'),
+(7, 'asics'),
+(8, 'asics'),
+(9, 'asics'),
+(10, 'youtube'),
+(11, 'python'),
+(12, 'git'),
+(13, 'git');
+
 -- --------------------------------------------------------
 
 --
@@ -84,23 +101,24 @@ CREATE TABLE `utilisateur` (
   `prenom` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `mdp` varchar(255) NOT NULL,
-  `iddeveloppeur` int(11) NOT NULL
+  `iddeveloppeur` int(11) NOT NULL,
+  `uniqid` int(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Contenu de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`idrole`, `nom`, `prenom`, `email`, `mdp`, `iddeveloppeur`) VALUES
-(1, 'mehdi', 'timmerman', 'mehditimmerman@gmail.com', '$2y$10$pIWwyzNteo0Kz4UlOlCwluuVoeUikqsQeyZTmRTdvESaLj6xvJQ2W', 0),
-(1, 'aze', 'aze', 'mpkohfdjogk@fff', '$2y$10$PEkzd8YL8NXbaFh9h2NQNuE7SkbDQ1T8wXQ.cXCEfikwUeL3VScLy', 0),
-(1, 'aze', 'aze', 'plllllptkpyghk@gmail', '$2y$10$9MtlUlc7Kql0tlNrrOnJ6O5QB3NHPxYgN6nc0fl0zJtLyrnNrMWCO', 0),
-(1, 'zzzzz', 'zzzzz', 'test2@gm', '$2y$10$f9LYf2ejGefJc1VnLw1nsewECnYMgXjzWMahe7qLzYd3m.SqxyItW', 0),
-(1, 'aze', 'aze', 'test@gmail', '$2y$10$hrC9XXgRwENvb05UpSPATe4NXQ/5PCOvRe9Xqw3U2KzyhST27UEYC', 0),
-(1, 'toto', 'toto', 'toto1@gmail.com', '$2y$10$BXStGbOQngKSUZ5UQVm34OLwc4pIs7Xrais8rVKcX0vxXi0/y3Mim', 0),
-(1, 'aze', 'aze', 'toto@gmail.com', '$2y$10$5Eznfs3SX5FHhUaiATHYCe1WSElpbSxyMwR4u/pdTQH/cOD9XYmHy', 0),
-(1, 'aze', 'aze', 'totoooooooo@gmail', '$2y$10$3YGyM/RVrCS878IZyP4sVO.X61tnCLY2yy25CLhyUSpdePc4at5sG', 0),
-(1, 'aze', 'aze', 'tsssssss@ggg', '$2y$10$CkCIBfea7hBpreL77JGWWOeWaljtjZlwzDhNVfN21PYiLAoAII4.q', 0);
+INSERT INTO `utilisateur` (`idrole`, `nom`, `prenom`, `email`, `mdp`, `iddeveloppeur`, `uniqid`) VALUES
+(1, 'mehdi', 'timmerman', 'mehditimmerman@gmail.com', '$2y$10$pIWwyzNteo0Kz4UlOlCwluuVoeUikqsQeyZTmRTdvESaLj6xvJQ2W', 0, 0),
+(1, 'aze', 'aze', 'mpkohfdjogk@fff', '$2y$10$PEkzd8YL8NXbaFh9h2NQNuE7SkbDQ1T8wXQ.cXCEfikwUeL3VScLy', 0, 0),
+(1, 'aze', 'aze', 'plllllptkpyghk@gmail', '$2y$10$9MtlUlc7Kql0tlNrrOnJ6O5QB3NHPxYgN6nc0fl0zJtLyrnNrMWCO', 0, 0),
+(1, 'zzzzz', 'zzzzz', 'test2@gm', '$2y$10$f9LYf2ejGefJc1VnLw1nsewECnYMgXjzWMahe7qLzYd3m.SqxyItW', 0, 0),
+(1, 'aze', 'aze', 'test@gmail', '$2y$10$hrC9XXgRwENvb05UpSPATe4NXQ/5PCOvRe9Xqw3U2KzyhST27UEYC', 0, 0),
+(1, 'toto', 'toto', 'toto1@gmail.com', '$2y$10$BXStGbOQngKSUZ5UQVm34OLwc4pIs7Xrais8rVKcX0vxXi0/y3Mim', 0, 0),
+(1, 'aze', 'aze', 'toto@gmail.com', '$2y$10$5Eznfs3SX5FHhUaiATHYCe1WSElpbSxyMwR4u/pdTQH/cOD9XYmHy', 0, 0),
+(1, 'aze', 'aze', 'totoooooooo@gmail', '$2y$10$3YGyM/RVrCS878IZyP4sVO.X61tnCLY2yy25CLhyUSpdePc4at5sG', 0, 0),
+(1, 'aze', 'aze', 'tsssssss@ggg', '$2y$10$CkCIBfea7hBpreL77JGWWOeWaljtjZlwzDhNVfN21PYiLAoAII4.q', 0, 0);
 
 --
 -- Index pour les tables exportées
@@ -153,7 +171,7 @@ ALTER TABLE `codage`
 -- AUTO_INCREMENT pour la table `langage`
 --
 ALTER TABLE `langage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `role`
 --
