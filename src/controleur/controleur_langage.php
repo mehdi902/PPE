@@ -8,8 +8,17 @@ function actionLangage($twig, $db){
     if(isset($_POST['btAjouterLangage'])){
         $inputLibelle = $_POST['inputLibelle'];
         
+        $unlangage=$langage->selectnomdulangagae($inputLibelle);
+        if($unlangage == null){               
         $exec = $langage->insert($inputLibelle);
         $form['libelle'] = $inputLibelle;
+        $form['valide']= true;
+        }
+        else{
+            $form['valide']= false;
+            $form['message'] = 'Langage déja dans la table';
+            
+        }
     }       
     $liste = $langage->select();
         
