@@ -12,16 +12,21 @@
             $this->db=$db;
             $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,idrole,uniqid) values(:email,:mdp,:nom,:prenom,:idrole,:uniqid)");
             $this->connect = $db->prepare("select email, idRole, mdp from utilisateur where email=:email");
+
             $this->select = $db->prepare("select email, idRole, nom, prenom, mdp , role.libelle as libellerole from utilisateur, role  where utilisateur.idrole = role.id order by nom");
             $this->update = $db->prepare("update utilisateur set mdp=:mdp where email=:email");
+
+      
             
 
 
            
         }
+
         public function insert($email, $mdp, $idrole, $nom, $prenom,$uniqid){
             $r = true;
             $this->insert->execute(array(':email'=>$email, ':mdp'=>$mdp, ':idrole'=>$idrole, ':nom'=>$nom, ':prenom'=>$prenom, ':uniqid'=>$uniqid));
+
             if ($this->insert->errorCode()!=0){
                 print_r($this->insert->errorInfo());
                 $r=false;}
