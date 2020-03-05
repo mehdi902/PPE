@@ -4,13 +4,15 @@
         private $insert;
         private $select;
         private $selectnomdulangage;
+        private $delete;
 
         
         public function __construct($db){
             $this->db=$db;
             $this->insert=$db->prepare("insert into langage (libelle) values(:libelle)");
-            $this->select=$db->prepare("select libelle from langage order by libelle");
+            $this->select=$db->prepare("select id, libelle from langage order by libelle");
             $this->selectnomdulangage=$db->prepare("select libelle from langage where libelle = :libelle order by libelle") ;
+            $this->delete = $db->prepare("delete from langage where id=:id");
 
            
         }
@@ -41,6 +43,18 @@
                 return $this->select->fetchAll();
         }
         
-        
+        public function delete($id){
+            $r = true;
+            $this->delete->execute(array(':id'=>$id));
+            if ($this->delete->errorCode()!=0){
+                print_r($this->delete->errorInfo());
+                $r=false;
+            }
+            return $r;
         }
+
+        
+        
+        
+}
  

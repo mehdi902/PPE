@@ -20,6 +20,8 @@ function actionInscription($twig,$db){
         $role = $_POST['role'];
         $date = date('Y-m-d H:i:s');
         $form['valide'] = true;
+        $dateinscription = $_POST['date'];
+
         $code = uniqid();
         
         $to  = $_POST['inputEmail'] ; // notez la virgule
@@ -107,4 +109,26 @@ function actionDeveloppeur($twig) {
     echo $twig->render('developpeur.html.twig',array());
 
 }
-
+function actionChangermdp($twig,$db){
+    $form = array();
+    $form['valide'] = true;
+    if(isset($_POST['btchangermdp'])){
+        $ancienmdp = $_POST['ancienmdp'];
+        $nouveaumdp = $_POST['nouveau'];
+        $confirmernouveaumdp = $_POST['confirmernouveaumdp'];
+        if ($nouveaumdp!=$confirmernouveaumdp){
+             $form['valide'] = false;
+            $form['message'] = 'Les mots de passe sont différents';
+        
+            if ($inputPassword!=$nouveaumdp){
+                $form['valide'] = false;
+            $form['message'] = 'Les mots de passe sont différents';}}
+        else{
+            $exec = $utilisateur->update( password_hash($inputPassword, PASSWORD_DEFAULT),$_SESSION['login']);
+            
+        }
+        
+        
+    }
+    echo $twig->render('changermdp.html.twig',array('form'=>$form));
+}

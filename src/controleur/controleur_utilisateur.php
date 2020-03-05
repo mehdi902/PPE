@@ -7,3 +7,4 @@ function actionUtilisateur($twig, $db){
     echo $twig->render('utilisateur.html.twig', array('form'=>$form,'liste'=>$liste)); 
     
 }
+

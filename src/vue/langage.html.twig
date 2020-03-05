@@ -4,26 +4,38 @@
 
 {% block contenu %} 
 
-        
-    <div class="card-body mx-auto" style="width: 70%; height: 70%">
-            <h1>Ajout des Langages</h1>  
-            <div class="panel panel-default"> 
+    {% if form.valide is defined %}
+        {% if form.valide == true %}
+            <div class="card mx-auto" style="width: 100%; height:100%; margin-top: 0%">
 
-            <div class="table-responsive border"> 
-                <table class="table table-hover table-striped border-bottom">
-                    <tr><th>Langages</th></tr>
 
-                    {% for langage in liste %}
 
-                    <tr><td>{{ langage.libelle }}  </td></tr> <div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td></tr>
-
-                    {% endfor %}    
-                </table>
+                <div class="card-header">
+                    <div class="alert alert-success alert-dismissible fade show mx-auto mx-lg-auto mx-md-auto" style="" role="alert">
+                      <strong>Langage bien inséré</strong> 
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                </div>
             </div>
-        </div>    
-    </div>
+        {% else %}
+            <div class="card mx-auto" style="width: 100%; height:100%; margin-top: 0%">
+
+                <div class="card-header">
+                    <div class="alert alert-warning alert-dismissible fade show mx-auto mx-lg-auto mx-md-auto" style="" role="alert">
+                      <strong>{{ form.message }}</strong> 
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                </div>
+            </div>
             
-          
+        {% endif %}
+        {% endif %}
+        
+
         <form class="form-signin" action="index.php?page=langage" method="post" enctype="application/x-www-form-urlencoded">
             <div class="card-body mx-auto" style="width: 70%; height:100%; margin-top: 2%">
                 <label for="inputLibelle" class="sr-only">Langage :</label>
@@ -33,7 +45,44 @@
                 <button class="btn btn-lg btn-primary btn-block mx-auto" style="width: 30%; height:80%; margin-top: 1%" type="submit" name="btAjouterLangage" id="btEnvoyer">Ajouter</button>
                 </div>
             </div> 
-        </form>  
+        </form>       
+    
+    
+
+    <div class="card-body mx-auto" style="width: 70%; height: 70%">
+            <h1>Liste des Langages</h1>  
+            <div class="panel panel-default"> 
+
+            <div class="table-responsive border"> 
+                <table class="table table-hover border-bottom">
+                    <tr><th>Langages</th></tr>
+
+                    {% for langage in liste %}
+
+                        <tr><td>{{ langage.libelle }}  </td>
+                            <td>
+                                    <button type="button" class="btn btn-default btn-lg">
+                                    <a href="#" >
+                                    <i class="fas fa-paint-brush"></i>
+                                    Modifier</button>
+                            </td>
+                            <td>
+                                    <button type="button" class="btn btn-default btn-lg">
+                                    <a href="index.php?page=langage&id={{langage.id}}" >
+                                    <i class="fas fa-trash"></i>
+                                    Supprimer</button>
+                            </td>
+                        </tr> 
+
+                    {% endfor %}    
+                </table>
+            </div>
+        </div>    
+    </div>
+            
+         
+             
+
 
             
             
