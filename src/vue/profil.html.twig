@@ -23,12 +23,12 @@
                 </tr>
             </thead>
             <tbody>
-                {% for u in liste %}
+                
                     <tr>  
-                        <td>{{ u.nom }} {{ u.prenom }}</td><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td>
+                        <td>{{ liste.nom }} {{ liste.prenom }}</td><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td>
 
                     </tr>
-                {% endfor %}
+              
             </tbody>
         </table>
         <table class="table table-striped">
@@ -38,12 +38,12 @@
                 </tr>
             </thead>
             <tbody>
-                {% for u in liste %}
+                
                     <tr>  
-                        <td>{{ u.email}}</td>
+                        <td>{{ liste.email}}</td>
 
                     </tr>
-                {% endfor %}
+                
 
         </table>
     </div>

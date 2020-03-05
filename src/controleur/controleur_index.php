@@ -18,13 +18,14 @@ function actionInscription($twig,$db){
         $inputnom =$_POST['nom'];
         $inputprenom =$_POST['prenom'];
         $role = $_POST['role'];
+        $date = date('Y-m-d H:i:s');
         $form['valide'] = true;
         $dateinscription = $_POST['date'];
 
         $code = uniqid();
         
         $to  = $_POST['inputEmail'] ; // notez la virgule
-        $adresse='http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=validation-email';
+        $adresse='http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?page=validation-email&email='.$inputEmail.'&code='.$code.'';
      // Sujet
      $subject = 'Bienvenue';
 
@@ -37,7 +38,6 @@ function actionInscription($twig,$db){
       <body>
         
         <p>Bonjour '.$inputprenom.' '.$inputnom.', Merci pour votre inscription à Nomdusite. Pour activer votre compte, veuillez utiliser le code suivant.</p>
-        <p>'.$code.'</p>
         <p>'.$code.'</p>
         <a href="'.$adresse.'">cliquez ici</a>
         
@@ -60,7 +60,7 @@ function actionInscription($twig,$db){
          $form['message'] = 'Les mots de passe sont différents';}
          else{
                  $utilisateur = new Utilisateur($db);
-                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $inputnom, $inputprenom, $code);
+                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $inputnom, $inputprenom, $code, $date);
                  if (!$exec){
                      $form['valide'] = false;
                      $form['message'] = 'Problème d\'insertion dans la table utilisateur ';
@@ -95,8 +95,11 @@ function actionDeconnexion($twig){
     }
     
     
-function actionProfil($twig){
-    echo $twig->render('profil.html.twig', array());
+function actionProfil($twig, $db){
+    $form = array();
+    $utilisateur = new Utilisateur($db);
+    $liste = $utilisateur->selectProfil($_SESSION['login']);
+    echo $twig->render('profil.html.twig', array('form'=>$form,'liste'=>$liste));
     
 }
 
