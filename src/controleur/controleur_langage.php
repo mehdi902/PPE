@@ -22,10 +22,25 @@ function actionLangage($twig, $db){
             
         }
     }       
+
+
+  
+
     
-     
+    if(isset($_GET['id'])){
+        $exec=$langage->delete($_GET['id']);
+        if (!$exec){
+            $form['suppression'] = false;
+            $form['messagesupression'] = 'Problème de suppression dans la table produit';
+        }
+    else{
+        $form['supression'] = true;
+        $form['messagesupression'] = 'Produit supprimé avec succès';
+        }
+    }
+    
+    
     $liste = $langage->select();
     echo $twig->render('langage.html.twig', array('form'=>$form,'liste'=>$liste));
+
 }
-
-

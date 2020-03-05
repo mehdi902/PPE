@@ -3,33 +3,64 @@
 {% block title %} {{ parent() }} Langages {% endblock %}       
 
 {% block contenu %} 
-
+    
+    {% if form.supression is defined %}
+        {% if form.supression == true %}
+            
+            <div class="container-fluid" style="margin-top: 2em">
+                <div class="alert alert-success alert-dismissible fade show mx-auto mx-lg-auto"  role="alert">
+                    <strong> {{ form.messagesupression }}</strong>
+                    
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>                 
+    
+                </div>
+            </div>    
+                
+                
+        {% else %}
+            
+            <div class="container-fluid" style="margin-top: 2em">
+                <div class="alert alert-danger alert-dismissible fade show mx-auto mx-lg-auto" role="alert">
+                    <strong> {{ form.messagesupression }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>                 
+    
+                </div>            
+                
+                
+                
+                
+        {% endif %}
+    {% endif %}
+                     
     {% if form.valide is defined %}
         {% if form.valide == true %}
-            <div class="card mx-auto" style="width: 100%; height:100%; margin-top: 0%">
+            
 
 
+            <div class="container-fluid" style="margin-top: 2em" >
+               
 
-                <div class="card-header">
-                    <div class="alert alert-success alert-dismissible fade show mx-auto mx-lg-auto mx-md-auto" style="" role="alert">
+                    <div class="alert alert-success alert-dismissible fade show mx-auto mx-lg-auto " style="" role="alert">
                       <strong>Langage bien inséré</strong> 
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                </div>
             </div>
+            
         {% else %}
-            <div class="card mx-auto" style="width: 100%; height:100%; margin-top: 0%">
 
-                <div class="card-header">
+            <div class="container-fluid" style="margin-top: 2em" >
                     <div class="alert alert-warning alert-dismissible fade show mx-auto mx-lg-auto mx-md-auto" style="" role="alert">
                       <strong>{{ form.message }}</strong> 
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                </div>
             </div>
             
         {% endif %}
@@ -55,17 +86,22 @@
 
             <div class="table-responsive border"> 
                 <table class="table table-hover border-bottom">
-                    <tr><th>Langages</th></tr>
+                    <tr>
+                        <td class='container-fluid'>
+                            <h3><strong>Langages</strong></h3>
+                        </td>
+                    </tr>
 
                     {% for langage in liste %}
 
-                        <tr><td>{{ langage.libelle }}  </td>
+                        <tr>
+                            
                             <td>
-                                    <button type="button" class="btn btn-default btn-lg">
-                                    <a href="#" >
-                                    <i class="fas fa-paint-brush"></i>
-                                    Modifier</button>
+                                <h4>
+                                    <strong>{{ langage.libelle }} </strong>
+                                </h4>
                             </td>
+
                             <td>
                                     <button type="button" class="btn btn-default btn-lg">
                                     <a href="index.php?page=langage&id={{langage.id}}" >
