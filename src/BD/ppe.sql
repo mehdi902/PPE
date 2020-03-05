@@ -2,10 +2,10 @@
 -- version 4.6.6deb4
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Lun 03 Février 2020 à 08:55
--- Version du serveur :  10.1.41-MariaDB-0+deb9u1
--- Version de PHP :  7.3.10-1+0~20191008.45+debian9~1.gbp365209
+-- Host: localhost:3306
+-- Generation Time: Feb 03, 2020 at 10:05 AM
+-- Server version: 10.1.41-MariaDB-0+deb9u1
+-- PHP Version: 7.3.10-1+0~20191008.45+debian9~1.gbp365209
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `PPE`
+-- Database: `ppe`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `codage`
+-- Table structure for table `codage`
 --
 
 CREATE TABLE `codage` (
@@ -35,7 +35,7 @@ CREATE TABLE `codage` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `developpeur`
+-- Table structure for table `developpeur`
 --
 
 CREATE TABLE `developpeur` (
@@ -45,7 +45,7 @@ CREATE TABLE `developpeur` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `langage`
+-- Table structure for table `langage`
 --
 
 CREATE TABLE `langage` (
@@ -54,7 +54,7 @@ CREATE TABLE `langage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Contenu de la table `langage`
+-- Dumping data for table `langage`
 --
 
 INSERT INTO `langage` (`id`, `libelle`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `langage` (`id`, `libelle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `role`
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -82,7 +82,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Contenu de la table `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`id`, `libelle`) VALUES
@@ -92,7 +92,7 @@ INSERT INTO `role` (`id`, `libelle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur`
+-- Table structure for table `utilisateur`
 --
 
 CREATE TABLE `utilisateur` (
@@ -102,30 +102,31 @@ CREATE TABLE `utilisateur` (
   `email` varchar(50) NOT NULL,
   `mdp` varchar(255) NOT NULL,
   `iddeveloppeur` int(11) NOT NULL,
-  `uniqid` int(13) NOT NULL
+  `uniqid` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Contenu de la table `utilisateur`
+-- Dumping data for table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`idrole`, `nom`, `prenom`, `email`, `mdp`, `iddeveloppeur`, `uniqid`) VALUES
-(1, 'mehdi', 'timmerman', 'mehditimmerman@gmail.com', '$2y$10$pIWwyzNteo0Kz4UlOlCwluuVoeUikqsQeyZTmRTdvESaLj6xvJQ2W', 0, 0),
-(1, 'aze', 'aze', 'mpkohfdjogk@fff', '$2y$10$PEkzd8YL8NXbaFh9h2NQNuE7SkbDQ1T8wXQ.cXCEfikwUeL3VScLy', 0, 0),
-(1, 'aze', 'aze', 'plllllptkpyghk@gmail', '$2y$10$9MtlUlc7Kql0tlNrrOnJ6O5QB3NHPxYgN6nc0fl0zJtLyrnNrMWCO', 0, 0),
-(1, 'zzzzz', 'zzzzz', 'test2@gm', '$2y$10$f9LYf2ejGefJc1VnLw1nsewECnYMgXjzWMahe7qLzYd3m.SqxyItW', 0, 0),
-(1, 'aze', 'aze', 'test@gmail', '$2y$10$hrC9XXgRwENvb05UpSPATe4NXQ/5PCOvRe9Xqw3U2KzyhST27UEYC', 0, 0),
-(1, 'toto', 'toto', 'toto1@gmail.com', '$2y$10$BXStGbOQngKSUZ5UQVm34OLwc4pIs7Xrais8rVKcX0vxXi0/y3Mim', 0, 0),
-(1, 'aze', 'aze', 'toto@gmail.com', '$2y$10$5Eznfs3SX5FHhUaiATHYCe1WSElpbSxyMwR4u/pdTQH/cOD9XYmHy', 0, 0),
-(1, 'aze', 'aze', 'totoooooooo@gmail', '$2y$10$3YGyM/RVrCS878IZyP4sVO.X61tnCLY2yy25CLhyUSpdePc4at5sG', 0, 0),
-(1, 'aze', 'aze', 'tsssssss@ggg', '$2y$10$CkCIBfea7hBpreL77JGWWOeWaljtjZlwzDhNVfN21PYiLAoAII4.q', 0, 0);
+(1, 'd', 'a', 'antoine.dumont2@epsi.fr', '$2y$10$zG/gHfOfbc.20q6DedM91erlfkunlOwHJeb6PvbIKuZkwmGwj.xOK', 0, '5e37f03fab7fe'),
+(1, 'mehdi', 'timmerman', 'mehditimmerman@gmail.com', '$2y$10$pIWwyzNteo0Kz4UlOlCwluuVoeUikqsQeyZTmRTdvESaLj6xvJQ2W', 0, '0'),
+(1, 'aze', 'aze', 'mpkohfdjogk@fff', '$2y$10$PEkzd8YL8NXbaFh9h2NQNuE7SkbDQ1T8wXQ.cXCEfikwUeL3VScLy', 0, '0'),
+(1, 'aze', 'aze', 'plllllptkpyghk@gmail', '$2y$10$9MtlUlc7Kql0tlNrrOnJ6O5QB3NHPxYgN6nc0fl0zJtLyrnNrMWCO', 0, '0'),
+(1, 'zzzzz', 'zzzzz', 'test2@gm', '$2y$10$f9LYf2ejGefJc1VnLw1nsewECnYMgXjzWMahe7qLzYd3m.SqxyItW', 0, '0'),
+(1, 'aze', 'aze', 'test@gmail', '$2y$10$hrC9XXgRwENvb05UpSPATe4NXQ/5PCOvRe9Xqw3U2KzyhST27UEYC', 0, '0'),
+(1, 'toto', 'toto', 'toto1@gmail.com', '$2y$10$BXStGbOQngKSUZ5UQVm34OLwc4pIs7Xrais8rVKcX0vxXi0/y3Mim', 0, '0'),
+(1, 'aze', 'aze', 'toto@gmail.com', '$2y$10$5Eznfs3SX5FHhUaiATHYCe1WSElpbSxyMwR4u/pdTQH/cOD9XYmHy', 0, '0'),
+(1, 'aze', 'aze', 'totoooooooo@gmail', '$2y$10$3YGyM/RVrCS878IZyP4sVO.X61tnCLY2yy25CLhyUSpdePc4at5sG', 0, '0'),
+(1, 'aze', 'aze', 'tsssssss@ggg', '$2y$10$CkCIBfea7hBpreL77JGWWOeWaljtjZlwzDhNVfN21PYiLAoAII4.q', 0, '0');
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `codage`
+-- Indexes for table `codage`
 --
 ALTER TABLE `codage`
   ADD PRIMARY KEY (`id`),
@@ -133,25 +134,25 @@ ALTER TABLE `codage`
   ADD KEY `iddeveloppeur` (`iddeveloppeur`);
 
 --
--- Index pour la table `developpeur`
+-- Indexes for table `developpeur`
 --
 ALTER TABLE `developpeur`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `langage`
+-- Indexes for table `langage`
 --
 ALTER TABLE `langage`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `utilisateur`
+-- Indexes for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`email`),
@@ -159,37 +160,37 @@ ALTER TABLE `utilisateur`
   ADD KEY `iddeveloppeur` (`iddeveloppeur`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `codage`
+-- AUTO_INCREMENT for table `codage`
 --
 ALTER TABLE `codage`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `langage`
+-- AUTO_INCREMENT for table `langage`
 --
 ALTER TABLE `langage`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
--- AUTO_INCREMENT pour la table `role`
+-- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- Contraintes pour les tables exportées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `codage`
+-- Constraints for table `codage`
 --
 ALTER TABLE `codage`
   ADD CONSTRAINT `codage_ibfk_1` FOREIGN KEY (`idlangage`) REFERENCES `langage` (`id`),
   ADD CONSTRAINT `codage_ibfk_2` FOREIGN KEY (`iddeveloppeur`) REFERENCES `developpeur` (`id`);
 
 --
--- Contraintes pour la table `utilisateur`
+-- Constraints for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
   ADD CONSTRAINT `utilisateur_ibfk_1` FOREIGN KEY (`idrole`) REFERENCES `role` (`id`);
