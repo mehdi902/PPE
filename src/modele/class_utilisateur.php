@@ -7,6 +7,7 @@
         private $select;
         private $selectProfil;
         private $update;
+        private $delete;
         
 
         
@@ -16,7 +17,8 @@
             $this->connect = $db->prepare("select email, idRole, mdp from utilisateur where email=:email");
             $this->select = $db->prepare("select email, idrole, nom, prenom, mdp , role.libelle as libellerole from utilisateur, role  where utilisateur.idrole = role.id order by nom");
             $this->selectProfil = $db->prepare("select email, idrole, nom, prenom, mdp , role.libelle as libellerole from utilisateur, role  where email = :email");
-            $this->update = $db->prepare("update utilisateur set mdp=:mdp where email=:email");           
+            $this->update = $db->prepare("update utilisateur set mdp=:mdp where email=:email");   
+            $this->delete = $db->prepare("delete from utilisateur where email=:email");
         }
 
         public function insert($email, $mdp, $idrole, $nom, $prenom,$uniqid, $date){
@@ -57,6 +59,14 @@
                 return $r;
             
         }
-
+        public function delete($email){
+            $r = true;
+            $this->delete->execute(array(':email'=>$email));
+            if ($this->delete->errorCode()!=0){
+                print_r($this->delete->errorInfo());
+                $r=false;
+            }
+            return $r;
+        }
     }
 

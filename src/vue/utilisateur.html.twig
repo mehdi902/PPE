@@ -1,17 +1,77 @@
 {% extends 'base.html.twig' %}
+{% block style %}<link href="css/style-signin.css" rel="stylesheet"> {% endblock %}
+{% block title %} {{ parent() }} Utilisateurs {% endblock %} 
 {% block contenu %}
-<div class="panel panel-default">
-      <div class="panel-heading">Liste des utilisateurs</div>
-   <div class="table-responsive">
-       <table class="table table-hover table-striped">
-           <tr><th>Email</th>
-               <th>Nom</th>
-                <th>Prénom</th>
-                <th>Rôle</th>
-           </tr>
- 
-  {% for utilisateur in liste %}          <tr><td>{{utilisateur.email}}</td><td>{{utilisateur.nom}}</td><td>{{utilisateur.prenom}}</td><td>{{utilisateur.libellerole}}</td ><td> <div class="btn-group btn-group-lg"><a href="index.php?page=utilisateur-modif"><span class="glyphicon glyphiconpencil" aria-hidden="true"></span></a></div></td><td><div class="btn-group btn-group-lg"><a href="#"><span class="glyphicon glyphicon-trash" ariahidden="true"></span></a></div></td></tr> 
- 
-  {% endfor %}    
-  </table>  </div> </div>
+
+    
+    
+    
+        {% if form.supressionuser is defined %}
+            {% if form.supressionuser == true %}
+            
+                <div class="container-fluid" style="margin-top: 2em">
+                    <div class="alert alert-success alert-dismissible fade show mx-auto mx-lg-auto"  role="alert">
+                        <strong> {{ form.messagesupressionutilisateur }}</strong>
+                    
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>                 
+    
+                    </div>
+                </div>    
+                
+                
+            {% else %}
+            
+                <div class="container-fluid" style="margin-top: 2em">
+                    <div class="alert alert-danger alert-dismissible fade show mx-auto mx-lg-auto" role="alert">
+                        <strong> {{ form.messagesupressionutilisateur }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                        </button>                 
+    
+                    </div>     
+                    
+                    
+        {% endif %}
+    {% endif %}
+                
+
+         <div class="card-body mx-auto" style="width: 70%; height: 70%">
+            <div class="panel panel-default"> 
+
+            <div class="table-responsive border"> 
+                <table class="table table-hover border-bottom">
+                    <tr>
+                        <td class='container-fluid'>
+                            <h3><strong>Utilisateurs</strong></h3>
+                        </td>
+                    </tr>
+
+                    {% for u in liste %}
+
+                        <tr>
+                            
+                            <td>
+                                <h4>
+                                    <strong>{{ u.email }} </strong>
+                                </h4>
+                            </td>
+
+                            <td>
+                                    <button type="button" class="btn btn-default btn-lg">
+                                    <a href="index.php?page=utilisateur&email={{u.email}}" >
+                                    <i class="fas fa-trash"></i>
+                                    Supprimer</button>
+                            </td>
+                        </tr> 
+
+                    {% endfor %}    
+                </table>
+            </div>
+        </div>    
+    </div>  
+  
+  
+  
   {% endblock %}
