@@ -13,7 +13,7 @@ function getPage($db){
     $lesPages['developpeur'] = "actionDeveloppeur;1";
     $lesPages['validation-email'] = "actionValidation;0";
     $lesPages['changermdp'] = "actionChangermdp;0";
-
+    $lesPages['utilisateur-modif'] = "actionUtilisateurModif;1";
 
     if ($db != null) {
 

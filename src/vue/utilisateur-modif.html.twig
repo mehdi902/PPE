@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block style %}<link href="css/style-signin.css" rel="stylesheet"> {% endblock %}
+{% block title %} {{ parent() }} modification {% endblock %}
+
+{% block contenu %}
+
+    
+    <form class="form-signin" action="index.php?page=utilisateur-modif" method="post" enctype="application/x-www-form-urlencoded">
+            <div class="card-body mx-auto" style="width: 70%; height:100%; margin-top: 2%">
+                <label for="inputNom" class="sr-only">Langage :</label>
+                <input type="text" id="inputNom" name="inputNom" class="form-control" placeholder="Nom" required autofocus>
+                <label for="inputNom" class="sr-only">Langage :</label>
+                <input type="text" id="inputPrenom" name="inputPrenom" class="form-control" placeholder="Prenom" required autofocus>
+                <label for="inputNom" class="sr-only">Langage :</label>
+                <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                
+                
+                <div class ="card-Footer mx-auto" style="width: 100%; height:50%; " >
+                <button class="btn btn-lg btn-primary btn-block mx-auto" style="width: 30%; height:80%; margin-top: 1%" type="submit" name="btAjouterLangage" id="btEnvoyer">Ajouter</button>
+                </div>
+            </div> 
+        </form> 
+    
+    
+    {% endblock %} 
