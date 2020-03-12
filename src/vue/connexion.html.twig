@@ -4,19 +4,14 @@
 
 {% block contenu %} 
 
-    {% if form.valide is defined %}
-        {% if form.valide == true %}
+    
+        {% if form.valide != true %}
 
-            <h1 class="h3 mb-3 font-weight-normal">Connexion réussie</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Email et mot de passe rentrés invalides</h1>
 
-        {% else %}
-
-            <h1 class="h3 mb-3 font-weight-normal">Erreur : {{form.message}}</h1>
-            <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=connexion">Retourner sur la page de connexion</a></h1>
-
+        
         {% endif %}
-    {% else %}
-
+   
         
         
         <div class="card mx-auto" style="width: 80%; height:100%; margin-top: 2%">
@@ -40,8 +35,6 @@
         </div>
 
            
-    {% endif %}
-
     
     
     
