@@ -34,7 +34,7 @@ function actionUtilisateurModif($twig, $db){
         }
          
             else{      
-                $form['message'] = 'Email incorrect';
+                $form['messageutili'] = 'Email incorrect';
                 } 
           }
     if(isset($_POST['btModifier'])){
@@ -42,12 +42,13 @@ function actionUtilisateurModif($twig, $db){
         $nom = $_POST['inputNom'];
         $prenom = $_POST['inputPrenom'];
         $email = $_POST['email'];
+        $form['validemodif'] = true;
     
     
         $exec=$utilisateur->updateUtilisateur($nom,$prenom, $email);
         if (!$exec){
           
-             $form['validemodif'] = false;
+             
              $form['messageutili'] = 'Utilisateur incorrect'; 
         }
             else{         
@@ -60,17 +61,23 @@ function actionUtilisateurModif($twig, $db){
                     $exec2=$utilisateur->updateMdp($email, password_hash($mdp, PASSWORD_DEFAULT));
 
 
-                $form['validemodif'] = true;
+                
                 $form['messageutili'] = 'Modification réussie';
+                
                     }
-
+                    else{
+                      
+                        $form['messageutili'] = 'Mot de passe différents';
+                    }
                 }
-                else{$form['message'] = 'Pas de mot de passe saisi';}
+                else{
+                  
+                    $form['messageutili'] = 'Pas de mot de passe saisi';}
                 }
                 }
                 else{
-                
-                $form['message'] = 'Utilisateur non précisé';
+              
+                $form['messageutili'] = 'Utilisateur non précisé';
                 }
                  
 
