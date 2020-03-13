@@ -55,12 +55,13 @@ function actionUtilisateurModif($twig, $db){
                 $mdp2 = $_POST['inputOldMdp'];
                 
                 if(!empty($mdp) and !empty($mdp2)){
+                    if($mdp==$mdp2){
                     $exec2=$utilisateur->updateMdp($email, password_hash($mdp, PASSWORD_DEFAULT));
 
 
                 $form['validemodif'] = true;
                 $form['messageutili'] = 'Modification réussie';
-
+                    }
 
                 }
                 else{$form['message'] = 'Pas de mot de passe saisi';}
