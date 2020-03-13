@@ -3,7 +3,7 @@
     <head>        
         <meta charset="utf-8">        
         <meta http-equiv="X-UA-Compatible" content="IE=edge">        
-        <meta name="viewport" content="width=device-width, initial-scale=1">        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->        
         <meta name="description" content="">        
         <meta name="author" content="">        
         <title> {% block title %} PPE1 - {% endblock %}</title> 
@@ -15,61 +15,68 @@
     {% block body %}        
 
 
+<div class="container-fluid">
+    <div class="row align-item-start ">
                         
-                        
-                        
-<nav class="navbar navbar-expand-md bg-light navbar-light">
-  <!-- Brand -->
-  <a class="navbar-brand" href="index.php?page=index">LeNomDuSite</a>
 
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-    {%if session.login is defined %}
-                    {%if session.role == 1 %}
-                        <div class="dropdown">
-                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Administration
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="index.php?page=langage">Gestion Langages</a>
-                            <a class="dropdown-item" href="index.php?page=utilisateur">Gestion Développeurs</a>
-                          </div>
+        <nav class="navbar navbar-expand-lg bg-light navbar-light">
+          <!-- Brand -->
+          <a class="navbar-brand" href="index.php?page=index">LeNomDuSite</a>
+
+          <!-- Toggler/collapsibe Button -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
 
-                    {% endif %}
-                {% endif %}
+          <!-- Navbar links -->
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
 
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="index.php?page=profil">Profil <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="index.php?page=langagesdisponibles" aria-disabled="false">Langages</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="index.php?page=utilisateursdisponibles" aria-disabled="false">Developpeurs</a>
-      </li>
-      {% if session.login is defined %}
-        <li><a class="nav-link" href="index.php?page=deconnexion">Se déconnecter</a></li>
-      {% else %}  
-        <li class="nav-item">
-        <a class="nav-link" href="index.php?page=connexion">Connexion</a>
-        </li>
-      {% endif %}
-    </ul>
-  </div>
-</nav>
+              <li class="nav-item">
+                <a class="nav-link " href="index.php?page=langagesdisponibles" aria-disabled="false">Langages</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="index.php?page=utilisateursdisponibles" aria-disabled="false">Developpeurs</a>
+              </li>
+              {% if session.login is defined %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php?page=profil">Profil <span class="sr-only">(current)</span></a>
+                    </li>  
+                <li>
+                    <a class="nav-link" href="index.php?page=deconnexion">Se déconnecter<span class="sr-only">(current)</span></a>
+                </li>
+              {% else %}  
+                <li class="nav-item">
+                <a class="nav-link" href="index.php?page=connexion">Connexion</a>
+                </li>
+              </ul>
+              {% endif %}
+                  {%if session.login is defined %}
+                            {%if session.role == 1 %}
+                                <div class="dropdown">
+                                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administration
+                                  </button>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="index.php?page=langage">Gestion Langages</a>
+                                    <a class="dropdown-item" href="index.php?page=utilisateur">Gestion Développeurs</a>
+                                  </div>
 
-      
 
+                            {% endif %}
+                        {% endif %}
+
+          </div>
+        </nav>
+
+    </div>  
+    <div class="row">
         {% block contenu %}
         {% endblock %}
+    </div>    
+    <div class="row">
         
-
     
 
     
@@ -85,7 +92,8 @@
             </div>
         </nav>
 
-        
+    </div>  
+    </div>    
     {% endblock %}               
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>    
     <script>window.jQuery || document.write('<script src="js/jquery3.2.1.min.js"></script>    
