@@ -55,7 +55,7 @@
                 <input type="text" id="inputPrenom" name="inputOldMdp" style="margin-bottom: 1%;" class="form-control" placeholder="Nouveau mot de passe"  autofocus>
                 <label for="inputNom" class="sr-only">confirmation :</label>
                 <input type="text" id="inputPrenom" name="inputNewMdp" style="margin-bottom: 1%;" class="form-control" placeholder="Confirmation nouveau mot de passe" value="" autofocus>
-                <input type="hidden" name="email" value="{{ form.utilisateur.email }}"/> 
+                <input type="email" name="email" value="{{ form.utilisateur.email }}"/> 
                 
                 <div class ="card-Footer mx-auto" style="width: 100%; height:50%; " >
                 <button class="btn btn-lg btn-primary btn-block mx-auto" style="width: 30%; height:80%; margin-top: 1%" type="submit" name="btModifier" id="btModifier">Modifier</button>
