@@ -8,8 +8,9 @@
         private $selectProfil;
         private $update;
         private $delete;
-        
-
+        private $selectByEmail;
+        private $updateUtilisateur;
+        private $updateMdp; 
         
         public function __construct($db){
             $this->db=$db;
@@ -19,6 +20,9 @@
             $this->selectProfil = $db->prepare("select email, idrole, nom, prenom, mdp , role.libelle as libellerole from utilisateur, role  where email = :email");
             $this->update = $db->prepare("update utilisateur set mdp=:mdp where email=:email");   
             $this->delete = $db->prepare("delete from utilisateur where email=:email");
+            $this->selectByEmail = $db->prepare("select idrole, nom, prenom, email, idrole from utilisateur where email = :email");
+            $this->updateUtilisateur = $db->prepare("update utilisateur set nom=:nom, prenom=:prenom where email=:email");
+            $this->updateMdp = $db->prepare("update utilisateur set mdp=:mdp where email=:email");
         }
 
         public function insert($email, $mdp, $idrole, $nom, $prenom,$uniqid, $date){
@@ -68,5 +72,34 @@
             }
             return $r;
         }
+        
+        public function selectByEmail($email){
+        $this->selectByEmail->execute(array(':email'=>$email));
+        if($this->selectByEmail->errorCode()!=0){
+            print_r($this->selectByEmail->errorInfo());
+        }
+        return $this->selectByEmail->fetch();
     }
+    public function updateUtilisateur($nom,$prenom,$email){
+        $r = true;
+        $this->updateUtilisateur->execute(array(':nom'=>$nom,':prenom'=>$prenom,':email'=>$email));
+        if ($this->updateUtilisateur->errorCode()!=0){
+            print_r($this->updateUtilisateur->errorInfo());
+            $r=false;
+            }       
+            return $r;
+            }  
+    public function updateMdp($mdp, $email){
+        $r = true;
+        $this->updateMdp->execute(array(':mdp'=>$mdp, ':email'=>$email));
+        if ($this->updateMdp->errorCode()!=0){
+            print_r($this->updateMdp->errorInfo());
+            $r=false;
+            }       
+            return $r;
+            }  
+            
+    }
+    
+    
 
