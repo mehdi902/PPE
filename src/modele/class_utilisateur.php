@@ -89,7 +89,7 @@
             }       
             return $r;
             }  
-    public function updateMdp($mdp, $email){
+    public function updateMdp($email, $mdp){
         $r = true;
         $this->updateMdp->execute(array(':mdp'=>$mdp, ':email'=>$email));
         if ($this->updateMdp->errorCode()!=0){
