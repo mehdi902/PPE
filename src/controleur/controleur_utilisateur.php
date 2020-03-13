@@ -64,12 +64,12 @@ function actionUtilisateurModif($twig, $db){
                     }
 
                 }
-                else{$form['message'] = 'Pas de mot de passe saisi';}
+                else{$form['messageutili'] = 'Pas de mot de passe saisi';}
                 }
                 }
                 else{
                 
-                $form['message'] = 'Utilisateur non précisé';
+                $form['messageutili'] = 'Utilisateur non précisé';
                 }
                  
 
