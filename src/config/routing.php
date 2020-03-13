@@ -13,6 +13,7 @@ function getPage($db){
     $lesPages['developpeur'] = "actionDeveloppeur;1";
     $lesPages['validation-email'] = "actionValidation;0";
     $lesPages['changermdp'] = "actionChangermdp;0";
+    $lesPages['utilisateur-modif'] = "actionUtilisateurModif;1";
     $lesPages['ajoutlangagesutilisateur'] = "actionLangagesutilisateur;0";
     $lesPages['langagesdisponibles'] = "actionLangagesdisponibles;0";
     $lesPages['utilisateursdisponibles'] = "actionUtilisateursdisponibles;0";
