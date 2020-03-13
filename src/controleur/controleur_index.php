@@ -21,7 +21,6 @@ function actionInscription($twig,$db){
         $date = date('Y-m-d H:i:s');
         $form['valide'] = true;
 
-
         $code = uniqid();
         
         $to  = $_POST['inputEmail'] ; // notez la virgule
