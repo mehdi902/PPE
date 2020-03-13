@@ -13,14 +13,20 @@
         {% block style %} {% endblock %}    
     </head>                    
     {% block body %}        
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="index.php">LeNomDuSite</a>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            
-                {%if session.login is defined %}
+
+
+                        
+                        
+                        
+<nav class="navbar navbar-expand-md bg-light navbar-light">
+  <!-- Brand -->
+  <a class="navbar-brand" href="index.php?page=index">LeNomDuSite</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    {%if session.login is defined %}
                     {%if session.role == 1 %}
                         <div class="dropdown">
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,45 +40,29 @@
 
                     {% endif %}
                 {% endif %}
-                </div>
-                
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php?page=profil">Profil <span class="sr-only">(current)</span></a>
-                    </li>                  
-                    <li class="nav-item">
-                        <a class="nav-link " href="index.php?page=langage" aria-disabled="false">Langage</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="index.php?" aria-disabled="false">Developpeur</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Test</a>
-                    </li>
-
-                    {% if session.login is defined %}
-                        <li><a class="nav-link" href="index.php?page=deconnexion">Se déconnecter</a></li>
-                    {% else %}  
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?page=connexion">Connexion</a>
-                    </li>
-                    {% endif %}
-                    {%if session.login is defined %}
-                        <li class="nav-item"><a class="nav-link" href="#">{{session.login}}</a></li>
-                       
-                        {% endif %}
-                    
-                    
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>
-
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?page=profil">Profil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="index.php?page=langagesdisponibles" aria-disabled="false">Langages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="index.php?page=utilisateursdisponibles" aria-disabled="false">Developpeurs</a>
+      </li>
+      {% if session.login is defined %}
+        <li><a class="nav-link" href="index.php?page=deconnexion">Se déconnecter</a></li>
+      {% else %}  
+        <li class="nav-item">
+        <a class="nav-link" href="index.php?page=connexion">Connexion</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
 
       
 
@@ -88,7 +78,7 @@
 
 
                         <h6 class ="mx-auto align-center" style="margin-top: 2%; margin-bottom: 2%; margin-left: 50%; margin-right: 10%" >
-                            © Copyright 2019 <a href="http://serveur1.arras-sio.com/symfony4-4055/PPE/web/index.php" class="text-black">Le site pour les sites</a> - Tous droits réservés
+                            © Copyright 2019 <a href="http://serveur1.arras-sio.com/symfony4-4055/PPE/web/index.php" class="text-black">Le site pour les sites</a> - Tous droits réservés - Développé par Dumont Antoine, Timmerman Mehdi et Dievart Vincent
                         </h6>
 
            

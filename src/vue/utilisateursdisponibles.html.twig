@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Validation email {% endblock %}
+
+{% block contenu %}
+    
+    
+         <div class="card-body mx-auto" style="width: 70%; height: 70%">
+             <h1> Développeurs </h1>
+            <div class="panel panel-default"> 
+
+            <div class="table-responsive border"> 
+                <table class="table table-hover border-bottom">
+                    {% for u in liste %}
+
+                        <tr>
+                            
+                            <td>
+                                <h4>
+                                    <strong>{{ u.email }} {{ u.nom }}{{ u.prenom }} </strong>
+                                </h4>
+                            </td>
+                            
+                        </tr> 
+
+                    {% endfor %}    
+                </table>
+            </div>
+        </div>    
+    </div> 
+{% endblock %}

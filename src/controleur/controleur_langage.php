@@ -41,6 +41,17 @@ function actionLangage($twig, $db){
     
     
     $liste = $langage->select();
+
     echo $twig->render('langage.html.twig', array('form'=>$form,'liste'=>$liste));
 
+}
+
+
+function actionLangagesdisponibles($twig,$db){
+    $form = array();
+    $langage = new Langage($db);
+
+    $listepublique = $langage->select();
+    echo $twig->render('langagesdisponibles.html.twig', array('form'=>$form,'listepublique'=>$listepublique));    
+    
 }

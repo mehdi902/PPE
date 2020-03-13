@@ -20,6 +20,7 @@ function actionInscription($twig,$db){
         $role = $_POST['role'];
         $date = date('Y-m-d H:i:s');
         $form['valide'] = true;
+        $dateinscription = $_POST['date'];
 
         $code = uniqid();
         
@@ -75,33 +76,18 @@ function actionInscription($twig,$db){
     echo $twig->render('inscription.html.twig', array('form'=>$form));
 }
 
-function actionConnexion($twig,$db){
-        $form = array();
-        $form['valide'] = true;
-        if (isset($_POST['btConnecter'])){
-            $inputEmail = $_POST['inputEmail'];
-            $inputPassword = $_POST['inputPassword'];
-            $utilisateur = new Utilisateur($db);
-            $unUtilisateur = $utilisateur->connect($inputEmail);
-            if ($unUtilisateur!=null){
-                if(!password_verify($inputPassword,$unUtilisateur['mdp'])){
-                    $form['valide'] = false;
-                    $form['messageConnexion'] = 'Login ou mot de passe incorrect';
-                    }            
-                else{
-                    $_SESSION['login'] = $inputEmail;
-                    $_SESSION['role'] = $unUtilisateur['idRole'];
-                    header("Location:index.php");
-                    }                                 
-                }       
-            else{
-                $form['valide'] = false;
-                $form['message'] = 'Login ou mot de passe incorrect';
-                    }
-                        }
-    echo $twig->render('connexion.html.twig', array('form'=>$form));
-    }
-    
+function actionConnexion($twig){
+    $form = array();
+    $form['valide'] = true;
+    if (isset($_POST['btConnecter'])){
+        $inputEmail = $_POST['inputEmail'];
+        $inputPassword = $_POST['inputPassword'];
+        $_SESSION['login'] = $inputEmail;
+        $_SESSION['role'] = 1;
+        header("Location:index.php");
+        }
+    echo $twig->render('connexion.html.twig', array());
+}
 function actionDeconnexion($twig){
     session_unset();
     session_destroy();
@@ -145,4 +131,20 @@ function actionChangermdp($twig,$db){
         
     }
     echo $twig->render('changermdp.html.twig',array('form'=>$form));
-}
+}    
+    
+    
+   
+    
+ function actionLangagesutilisateur($twig){
+    echo $twig->render('ajoutlangagesutilisateur.html.twig', array());
+    
+}      
+    
+ function actionUtilisateursdisponibles($twig){
+    echo $twig->render('utilisateursdisponibles.html.twig', array());
+    
+}      
+    
+    
+
