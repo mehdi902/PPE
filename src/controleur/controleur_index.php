@@ -20,7 +20,6 @@ function actionInscription($twig,$db){
         $role = $_POST['role'];
         $date = date('Y-m-d H:i:s');
         $form['valide'] = true;
-        
 
         $code = uniqid();
         
@@ -156,11 +155,6 @@ function actionChangermdp($twig,$db){
     echo $twig->render('ajoutlangagesutilisateur.html.twig', array());
     
 }      
-    
- function actionUtilisateursdisponibles($twig){
-    echo $twig->render('utilisateursdisponibles.html.twig', array());
-    
-}      
-    
+
     
 

@@ -83,4 +83,11 @@ function actionUtilisateurModif($twig, $db){
 
 echo $twig->render('utilisateur-modif.html.twig', array('form'=>$form)); 
     }
-  
+function actionUtilisateurs($twig,$db){
+    $form = array();
+    $utilisateur = new Utilisateur($db);
+
+    $listeutilisateur = $utilisateur->select();
+    echo $twig->render('utilisateursdisponibles.html.twig', array('form'=>$form,'listeutilisateur'=>$listeutilisateur));    
+    
+}
