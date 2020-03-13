@@ -54,7 +54,7 @@ function actionUtilisateurModif($twig, $db){
                 $mdp = $_POST['inputNewMdp'];
                 $mdp2 = $_POST['inputOldMdp'];
                 
-                if(!empty($mdp) and !empty($mdp2)){
+                if(!empty($mdp) and !empty($mdp2) and ($mdp==$mdp2)){
                     $exec2=$utilisateur->updateMdp($email, password_hash($mdp, PASSWORD_DEFAULT));
 
 
