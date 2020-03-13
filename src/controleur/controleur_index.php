@@ -20,7 +20,7 @@ function actionInscription($twig,$db){
         $role = $_POST['role'];
         $date = date('Y-m-d H:i:s');
         $form['valide'] = true;
-        $dateinscription = $_POST['date'];
+        
 
         $code = uniqid();
         
