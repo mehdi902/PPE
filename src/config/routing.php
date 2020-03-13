@@ -16,7 +16,7 @@ function getPage($db){
     $lesPages['utilisateur-modif'] = "actionUtilisateurModif;1";
     $lesPages['ajoutlangagesutilisateur'] = "actionLangagesutilisateur;0";
     $lesPages['langagesdisponibles'] = "actionLangagesdisponibles;0";
-    $lesPages['utilisateursdisponibles'] = "actionUtilisateursdisponibles;0";
+    $lesPages['utilisateursdisponibles'] = "actionUtilisateurs;0";
 
 
     if ($db != null) {

@@ -156,11 +156,6 @@ function actionChangermdp($twig,$db){
     echo $twig->render('ajoutlangagesutilisateur.html.twig', array());
     
 }      
-    
- function actionUtilisateursdisponibles($twig){
-    echo $twig->render('utilisateursdisponibles.html.twig', array());
-    
-}      
-    
+
     
 

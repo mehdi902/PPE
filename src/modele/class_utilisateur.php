@@ -11,6 +11,7 @@
         private $selectByEmail;
         private $updateUtilisateur;
         private $updateMdp; 
+        private $selectutilisateur;
         
         public function __construct($db){
             $this->db=$db;
@@ -99,7 +100,12 @@
             return $r;
             }  
             
-    }
     
-    
+            public function selectutilisateur(){
+            $liste = $this->select->execute();
+            if ($this->select->errorCode()!=0){
+                print_r($this->select->errorInfo());}
+                return $this->select->fetchAll();
+                }
 
+    }
