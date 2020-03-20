@@ -11,7 +11,8 @@
         private $selectByEmail;
         private $updateUtilisateur;
         private $updateMdp; 
-        private $selectutilisateur;
+        private $selectLimit;
+        private $selectCount;
         
         public function __construct($db){
             $this->db=$db;
@@ -24,6 +25,8 @@
             $this->selectByEmail = $db->prepare("select idrole, nom, prenom, email, idrole from utilisateur where email = :email");
             $this->updateUtilisateur = $db->prepare("update utilisateur set nom=:nom, prenom=:prenom where email=:email");
             $this->updateMdp = $db->prepare("update utilisateur set mdp=:mdp where email=:email");
+            $this->selectLimit = $db->prepare("select email, nom from utilisateur order by email limit :inf,:limite");
+            $this->selectCount =$db->prepare("select count(*) as nb from utilisateur"); 
         }
 
         public function insert($email, $mdp, $idrole, $nom, $prenom,$uniqid, $date){
@@ -98,14 +101,27 @@
             $r=false;
             }       
             return $r;
-            }  
+            }
+            
+     public function selectLimit($inf, $limite){
+            $this->selectLimit->bindParam(':inf', $inf, PDO::PARAM_INT);
+            $this->selectLimit->bindParam(':limite', $limite, PDO::PARAM_INT);
+            $this->selectLimit->execute();
+            if ($this->selectLimit->errorCode()!=0){
+                print_r($this->selectLimit->errorInfo());
+                }        
+                return $this->selectLimit->fetchAll();    }
+        
+        public function selectCount(){
+         $this->selectCount->execute();
+         if ($this->selectCount->errorCode()!=0){
+             print_r($this->selectCount->errorInfo());
+             }
+        return $this->selectCount->fetch();}
+        }
+            
             
     
-            public function selectutilisateur(){
-            $liste = $this->select->execute();
-            if ($this->select->errorCode()!=0){
-                print_r($this->select->errorInfo());}
-                return $this->select->fetchAll();
-                }
+    
+    
 
-    }

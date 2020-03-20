@@ -6,6 +6,8 @@
         private $selectnomdulangage;
         private $delete;
         private $selectlangagepublique;
+        private $selectLimit;
+        private $selectCount; 
 
         
         public function __construct($db){
@@ -15,7 +17,8 @@
             $this->selectnomdulangage=$db->prepare("select libelle from langage where libelle = :libelle order by libelle") ;
             $this->delete = $db->prepare("delete from langage where id=:id");
             $this->selectlangagepublique = $db->prepare("select libelle from langage");
-           
+            $this->selectLimit = $db->prepare("select id, libelle from langage order by id limit :inf,:limite");
+            $this->selectCount =$db->prepare("select count(*) as nb from langage"); 
         }
         
         public function selectnomdulangagae($libelle){
@@ -61,8 +64,28 @@
                 print_r($this->selectlangagepublique->errorInfo());}
                 return $this->selectlangagepublique->fetchAll();
         }
+       
+        public function selectLimit($inf, $limite){
+            $this->selectLimit->bindParam(':inf', $inf, PDO::PARAM_INT);
+            $this->selectLimit->bindParam(':limite', $limite, PDO::PARAM_INT);
+            $this->selectLimit->execute();
+            if ($this->selectLimit->errorCode()!=0){
+                print_r($this->selectLimit->errorInfo());
+                }        
+                return $this->selectLimit->fetchAll();    }
+        
+        public function selectCount(){
+         $this->selectCount->execute();
+         if ($this->selectCount->errorCode()!=0){
+             print_r($this->selectCount->errorInfo());
+             }
+        return $this->selectCount->fetch();}
+        }
+             
+
         
         
         
-}
+        
+
  

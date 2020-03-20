@@ -3,7 +3,7 @@
 function actionUtilisateur($twig, $db){
     $form = array();
     $utilisateur = new Utilisateur($db);
-
+    $liste = $utilisateur->select();
     
 
     if(isset($_GET['email'])){
@@ -19,7 +19,20 @@ function actionUtilisateur($twig, $db){
         
 
 }
-    $liste = $utilisateur->select();
+            $limite=3;
+    if(!isset($_GET['nopage'])){
+        $inf=0;
+        $nopage=0;
+        }
+        else{
+            $nopage=$_GET['nopage'];
+            $inf=$nopage * $limite;
+            }    
+            $r = $utilisateur->selectCount();
+            $nb = $r['nb'];
+            $liste = $utilisateur->selectLimit($inf,$limite);
+            $form['nbpages'] = ceil($nb/$limite);
+    
     echo $twig->render('utilisateur.html.twig', array('form'=>$form,'liste'=>$liste)); 
 }
 
@@ -80,14 +93,7 @@ function actionUtilisateurModif($twig, $db){
                 $form['messageutili'] = 'Utilisateur non précisé';
                 }
                  
-
+                
 echo $twig->render('utilisateur-modif.html.twig', array('form'=>$form)); 
     }
-function actionUtilisateurs($twig,$db){
-    $form = array();
-    $utilisateur = new Utilisateur($db);
-
-    $listeutilisateur = $utilisateur->select();
-    echo $twig->render('utilisateursdisponibles.html.twig', array('form'=>$form,'listeutilisateur'=>$listeutilisateur));    
-    
-}
+  
