@@ -4,8 +4,8 @@
 {% block contenu %}
     
     
-         <div class="card-body mx-auto" style="width: 70%; height: 70%">
-             <h1> Développeurs </h1>
+         <div class="card-body mx-auto" style="max-width: 90%">
+             <h1> <span class="badge "> </span>  </h1>
             <div class="panel panel-default"> 
 
             <div class="table-responsive border"> 
@@ -18,8 +18,7 @@
                                 <h4>
                                     <strong>{{ u.email }} {{ u.nom }}{{ u.prenom }} </strong>
                                 </h4>
-                            </td>
-                            
+                            </td> 
                         </tr> 
 
                     {% endfor %}    
@@ -28,3 +27,8 @@
         </div>    
     </div> 
 {% endblock %}
+
+
+
+
+

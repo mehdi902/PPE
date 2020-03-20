@@ -66,9 +66,9 @@
         {% endif %}
         {% endif %}
         
-
+    <div class="card mx-auto" style="width: 80%">
         <form class="form-signin" action="index.php?page=langage" method="post" enctype="application/x-www-form-urlencoded">
-            <div class="card-body mx-auto" style="width: 70%; height:100%; margin-top: 2%">
+            <div class="card-body mx-auto" >
                 <label for="inputLibelle" class="sr-only">Langage :</label>
                 <input type="text" id="inputLibelle" name="inputLibelle" class="form-control" placeholder="Langage" required autofocus>
 
@@ -90,6 +90,7 @@
                         <td class='container-fluid'>
                             <h3><strong>Langages</strong></h3>
                         </td>
+                        <td></td>
                     </tr>
 
                     {% for langage in liste %}
@@ -115,7 +116,7 @@
             </div>
         </div>    
     </div>
-            
+    </div>            
          
              
 
