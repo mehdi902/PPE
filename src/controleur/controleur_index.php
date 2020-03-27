@@ -114,6 +114,43 @@ function actionProfil($twig, $db){
     $form = array();
     $utilisateur = new Utilisateur($db);
     $liste = $utilisateur->selectProfil($_SESSION['login']);
+    
+    
+    if(isset($_POST['btProfil'])){
+      $email = $_POST['email'];
+        
+      
+      
+      $photo=NULL;
+      
+    if(isset($_FILES['photo'])){
+        if(!empty($_FILES['photo']['name'])){
+            $extensions_ok = array('png', 'gif', 'jpg', 'jpeg');
+            $taille_max = 500000; 
+            $dest_dossier = '/var/www/html/symfony4-4066/public/PPE/web/image/';      
+            if( !in_array( substr(strrchr($_FILES['photo']['name'], '.'), 1), $extensions_ok ) ){
+                echo 'Veuillez sélectionner un fichier de type png, gif ou jpg !';            } 
+                else{    
+                    if( file_exists($_FILES['photo']['tmp_name'])&& (filesize($_FILES['photo'] ['tmp_name'])) >
+                            $taille_max){                    
+                        echo 'Votre fichier doit faire moins de 500Ko !';
+                        }               
+                        else{
+                             $photo = basename($_FILES['photo']['name']);   
+                             $photo=strtr($photo,'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ','AAA AAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');  
+                             $photo = preg_replace('/([^.a-z0-9]+)/i', '_', $photo); 
+                             move_uploaded_file($_FILES['photo']['tmp_name'], $dest_dossier.$photo);
+                             }   
+                             }    
+                             }   
+                             
+                            
+    }
+                
+                $exec = $utilisateur->updateProfil($photo, $email);
+                $form['message'] = 'Rechargez la page pour afficher les modifications';
+                        }
+    
     echo $twig->render('profil.html.twig', array('form'=>$form,'liste'=>$liste));
     
 }
@@ -156,5 +193,8 @@ function actionChangermdp($twig,$db){
     
 }      
 
-    
 
+
+                                
+                    
+    

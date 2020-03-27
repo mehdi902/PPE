@@ -21,11 +21,11 @@
 </form>
 
     {% else %}        
-        <h1 class="alert alert-danger">{{ form.message }}</h1>
+        <h1 class="alert alert-danger" role="alert">{{ form.message }}</h1>
         <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=utilisateur">Retourner sur la liste des utilisateurs</a></h1>    
     {% endif %}        
     {% else %}      
-        <h1 class="alert alert-danger">{{ form.message }}</h1>     
+        <h1 class="alert alert-danger" role="alert">{{ form.message }}</h1>     
         <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=utilisateur">Retourner sur la liste des utilisateurs</a></h1> 
         {% endif %}    
         {% endblock %} 

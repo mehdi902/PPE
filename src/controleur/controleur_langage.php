@@ -3,7 +3,7 @@
 function actionLangage($twig, $db){
     $form = array();
     $langage = new Langage ($db);
-    
+    $liste = $langage->select();
 
     
     if(isset($_POST['btAjouterLangage'])){
@@ -39,8 +39,21 @@ function actionLangage($twig, $db){
         }
     }
     
+    $limite=3;
+    if(!isset($_GET['nopage'])){
+        $inf=0;
+        $nopage=0;
+        }
+        else{
+            $nopage=$_GET['nopage'];
+            $inf=$nopage * $limite;
+            }    
+            $r = $langage->selectCount();
+            $nb = $r['nb'];
+            $liste = $langage->selectLimit($inf,$limite);
+            $form['nbpages'] = ceil($nb/$limite);
+            
     
-    $liste = $langage->select();
 
     echo $twig->render('langage.html.twig', array('form'=>$form,'liste'=>$liste));
 

@@ -6,14 +6,28 @@
 
 {% block contenu %} 
 
-    <div class="mx-auto" style="width: 20rem;">
-        <img src="../web/image/profilvide.png" class="img-fluid" alt="Responsive image"> 
+    {% if form.message is defined %}
+            <div>
+                    <div class="alert alert-success alert-dismissible fade show mx-auto mx-lg-auto mx-md-auto" role="alert">
+                        <strong> {{form.message}}, <a href="index.php?page=profil" class="text-success stretched-link">cliquez ici</a></strong> 
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>   
+         </div>
+       {% endif %}
+    
+    <div class="mx-auto" style="width: 20rem; margin-top: 3%">
+        <img src="../web/image/{{ liste.photo }}" class="img-fluid" alt="Responsive image"> 
         <div class="card-body">
-            <h5 class="card-title">Identifiant</h5>
+            <form class="needs-validation"  enctype="multipart/form-data" style="margin-top: 10%; margin-left: 10%; margin-right: 10%" method="post" action="index.php?page=profil">
+           
             <label for="photo" class="sr-only">Photo :</label><input type="file" name="photo" id="photo" class="form-control"/>
-            <form class="form-signin" action="index.php?page=profil" method="post" enctype="multipart/form-data">
-            <button class="btn btn-lg btn-primary btn-block mx-auto" style="width: 100%" type="submit" name="btChangerPhoto" id="btChangerPhoto">Changer votre photo</button>    
+            <input type="hidden" name="email" value="{{ liste.email }}"/> 
             
+            <button type="submit" class="btn btn-primary" name="btProfil" id="btprofil" style="margin-top: 3%">Changer image</button>
+            </form>
+
         </div>
     </div>
     <div class="table-responsive">
@@ -21,8 +35,8 @@
             <thead class="thead-light">
                 
                 <tr>
-                    <th scope="col">Identifiant</th>
-
+                    <th scope="col">Nom et prénom</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
