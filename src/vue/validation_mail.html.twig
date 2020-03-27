@@ -3,10 +3,20 @@
 
 {% block contenu %} 
     
-   
+    {% if form.validemodif == True %}
+        
+         <div>
+                    <div class="alert alert-success alert-dismissible fade show mx-auto mx-lg-auto mx-md-auto" role="alert">
+                        <strong> Email validé, <a href="index.php?page=index" class="text-success stretched-link">revenir au menu</a></strong> 
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>   
+         </div>
+        
+        {% endif %}  
     
-    {% if form.utilisateur is defined %}
-        {% if form.utilisateur != null %} 
+
     <h1>Valider votre email</h1>
     
     <form action='index.php?page=validation-email' method = 'post'>
@@ -21,7 +31,5 @@
   </div>
   <button type="submit" class="btn btn-primary" name="btValidation" id="btValidation">Valider</button>
 </form>
-
-    {% endif %}  
-        {% endif %}    
+ 
         {% endblock %} 
