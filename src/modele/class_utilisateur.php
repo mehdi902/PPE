@@ -18,7 +18,7 @@
         
         public function __construct($db){
             $this->db=$db;
-            $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,idrole,uniqid, date) values(:email,:mdp,:nom,:prenom,:idrole,:uniqid, :date)");
+            $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,idrole,uniqid, date, photo) values(:email,:mdp,:nom,:prenom,:idrole,:uniqid, :date, 'profilvide.png')");
             $this->connect = $db->prepare("select email, idRole, mdp from utilisateur where email=:email");
             $this->select = $db->prepare("select email, idrole, nom, prenom, mdp , role.libelle as libellerole from utilisateur, role  where utilisateur.idrole = role.id order by nom");
             $this->selectProfil = $db->prepare("select email, idrole, nom, prenom,photo, mdp , role.libelle as libellerole from utilisateur, role  where email = :email");
