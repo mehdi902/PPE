@@ -12,18 +12,20 @@
         private $updateUtilisateur;
         private $updateMdp; 
         private $selectutilisateur;
+        private $updateUtilisateurPhoto;
         
         public function __construct($db){
             $this->db=$db;
-            $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,idrole,uniqid, date) values(:email,:mdp,:nom,:prenom,:idrole,:uniqid, :date)");
+            $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,idrole,uniqid, date, photo) values(:email,:mdp,:nom,:prenom,:idrole,:uniqid, :date, :photo)");
             $this->connect = $db->prepare("select email, idRole, mdp from utilisateur where email=:email");
-            $this->select = $db->prepare("select email, idrole, nom, prenom, mdp , role.libelle as libellerole from utilisateur, role  where utilisateur.idrole = role.id order by nom");
+            $this->select = $db->prepare("select email, idrole, nom, prenom, mdp, photo, role.libelle as libellerole from utilisateur, role  where utilisateur.idrole = role.id order by nom");
             $this->selectProfil = $db->prepare("select email, idrole, nom, prenom, mdp , role.libelle as libellerole from utilisateur, role  where email = :email");
             $this->update = $db->prepare("update utilisateur set mdp=:mdp where email=:email");   
             $this->delete = $db->prepare("delete from utilisateur where email=:email");
             $this->selectByEmail = $db->prepare("select idrole, nom, prenom, email, idrole from utilisateur where email = :email");
             $this->updateUtilisateur = $db->prepare("update utilisateur set nom=:nom, prenom=:prenom where email=:email");
             $this->updateMdp = $db->prepare("update utilisateur set mdp=:mdp where email=:email");
+            $this->updateUtilisateurPhoto = $db->prepare("update utilisateur set photo=:photo where email=:email");
         }
 
         public function insert($email, $mdp, $idrole, $nom, $prenom,$uniqid, $date){
@@ -107,5 +109,15 @@
                 print_r($this->select->errorInfo());}
                 return $this->select->fetchAll();
                 }
-
+        
+                
+    public function updateUtilisateurPhoto($photo, $email){
+        $r = true;
+        $this->updateUtilisateurPhoto->execute(array(':photo'=>$mdp, ':email'=>$email));
+        if ($this->updateUtilisateurPhoto->errorCode()!=0){
+            print_r($this->updateUtilisateurPhoto->errorInfo());
+            $r=false;
+            }       
+            return $r;
+            } 
     }

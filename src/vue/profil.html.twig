@@ -10,7 +10,10 @@
         <img src="../web/image/profilvide.png" class="img-fluid" alt="Responsive image"> 
         <div class="card-body">
             <h5 class="card-title">Identifiant</h5>
-            <a href="#" class="btn btn-primary">Changer image de profil</a>
+            <label for="photo" class="sr-only">Photo :</label><input type="file" name="photo" id="photo" class="form-control"/>
+            <form class="form-signin" action="index.php?page=profil" method="post" enctype="multipart/form-data">
+            <button class="btn btn-lg btn-primary btn-block mx-auto" style="width: 100%" type="submit" name="btChangerPhoto" id="btChangerPhoto">Changer votre photo</button>    
+            
         </div>
     </div>
     <div class="table-responsive">
