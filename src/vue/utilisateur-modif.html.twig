@@ -3,7 +3,7 @@
 {% block title %} {{ parent() }} modification {% endblock %}
 
 {% block contenu %}
-    
+    <div class="container">
     {% if form.validemodif is defined %}
             {% if form.validemodif == true %}
             
@@ -46,7 +46,8 @@
   
             
             
-            
+    <div class="row">
+        <div class="col-md">
             
     <form class="form-signin" action="index.php?page=utilisateur-modif" method="post" enctype="application/x-www-form-urlencoded">
             <div class="card-body mx-auto" style="width: 70%; height:100%; margin-top: 2%">
@@ -66,5 +67,8 @@
             </div> 
         </form> 
     
+        </div>
+    </div>
+        </div>            
     {% endif %}{% endif %}
     {% endblock %} 
