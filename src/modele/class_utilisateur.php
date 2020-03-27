@@ -13,13 +13,15 @@
         private $updateMdp; 
         private $selectLimit;
         private $selectCount;
+        private $updateProfil;
+        
         
         public function __construct($db){
             $this->db=$db;
             $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,idrole,uniqid, date) values(:email,:mdp,:nom,:prenom,:idrole,:uniqid, :date)");
             $this->connect = $db->prepare("select email, idRole, mdp from utilisateur where email=:email");
             $this->select = $db->prepare("select email, idrole, nom, prenom, mdp , role.libelle as libellerole from utilisateur, role  where utilisateur.idrole = role.id order by nom");
-            $this->selectProfil = $db->prepare("select email, idrole, nom, prenom, mdp , role.libelle as libellerole from utilisateur, role  where email = :email");
+            $this->selectProfil = $db->prepare("select email, idrole, nom, prenom,photo, mdp , role.libelle as libellerole from utilisateur, role  where email = :email");
             $this->update = $db->prepare("update utilisateur set mdp=:mdp where email=:email");   
             $this->delete = $db->prepare("delete from utilisateur where email=:email");
             $this->selectByEmail = $db->prepare("select idrole, nom, prenom, email, idrole from utilisateur where email = :email");
@@ -27,6 +29,7 @@
             $this->updateMdp = $db->prepare("update utilisateur set mdp=:mdp where email=:email");
             $this->selectLimit = $db->prepare("select email, nom from utilisateur order by email limit :inf,:limite");
             $this->selectCount =$db->prepare("select count(*) as nb from utilisateur"); 
+            $this->updateProfil = $db->prepare("update utilisateur set photo=:image where email=:email");
         }
 
         public function insert($email, $mdp, $idrole, $nom, $prenom,$uniqid, $date){
@@ -118,7 +121,19 @@
              print_r($this->selectCount->errorInfo());
              }
         return $this->selectCount->fetch();}
-        }
+        
+        
+         public function updateProfil($image, $email){
+        $r = true;
+        $this->updateProfil->execute(array(':image'=>$image,':email'=>$email));
+        if ($this->updateProfil->errorCode()!=0){
+            print_r($this->updateProfil->errorInfo());
+            $r=false;
+            }       
+            return $r;
+            }  
+        
+         }
             
             
     

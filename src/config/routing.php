@@ -17,7 +17,7 @@ function getPage($db){
     $lesPages['ajoutlangagesutilisateur'] = "actionLangagesutilisateur;0";
     $lesPages['langagesdisponibles'] = "actionLangagesdisponibles;0";
     $lesPages['utilisateursdisponibles'] = "actionUtilisateursdisponibles;0";
-    $lesPages['modif-profil'] = "actionModifProfil;0";
+
 
     if ($db != null) {
 
