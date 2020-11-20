@@ -2,8 +2,14 @@
 {% block title %} {{ parent() }} Validation email {% endblock %}
 
 {% block contenu %} 
-    
+    <div class="container">
     {% if form.validemodif == True %}
+        
+        
+        
+        
+            <div class="row">
+                <div class="col-md">
         
          <div>
                     <div class="alert alert-success alert-dismissible fade show mx-auto mx-lg-auto mx-md-auto" role="alert">
@@ -13,10 +19,13 @@
                       </button>
                     </div>   
          </div>
+                </div>
+            </div>
         
         {% endif %}  
     
-
+            
+                <div class="col-md">
     <h1>Valider votre email</h1>
     
     <form action='index.php?page=validation-email' method = 'post'>
@@ -31,5 +40,9 @@
   </div>
   <button type="submit" class="btn btn-primary" name="btValidation" id="btValidation">Valider</button>
 </form>
- 
+    
+    
+        </div>
+    
+</div> 
         {% endblock %} 
