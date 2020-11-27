@@ -85,9 +85,9 @@ function actionConnexion($twig,$db){
             $utilisateur = new Utilisateur($db);
             $unUtilisateur = $utilisateur->connect($inputEmail);
             if ($unUtilisateur!=null){
-                if(!password_verify($inputPassword,$unUtilisateur['mdp'])){
+                if(!password_verify($inputPassword,$unUtilisateur['mdp'])|| $unUtilisateur['idRole']== 3 ){
                     $form['valide'] = false;
-                    $form['messageConnexion'] = 'Login ou mot de passe incorrect';
+                    $form['messageConnexion'] = "Login incorrect ou le compte n'est pas activé";
                     }            
                 else{
                     $_SESSION['login'] = $inputEmail;

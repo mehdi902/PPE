@@ -2,60 +2,16 @@
 {% block title %} {{ parent() }} Validation email {% endblock %}
 
 {% block contenu %} 
-    <div class="container">
 
-
-
-
-    {% if form.validemodif == True %}
-        
-        
-        
-        
-            <div class="row">
-                <div class="col-md">
-        
-         <div>
+         <div style="width:100%">
                     <div class="alert alert-success alert-dismissible fade show mx-auto mx-lg-auto mx-md-auto" role="alert">
-                        <strong> Email validé, <a href="index.php?page=index" class="text-success stretched-link">revenir au menu</a></strong> 
+                        <strong> Compte validé, <a href="index.php?page=connexion" class="text-success stretched-link">Connectez-vous</a></strong> 
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>   
          </div>
-                </div>
-            </div>
-        
-        {% endif %}  
-    
-            
-                <div class="col-md">
-    <h1>Valider votre email</h1>
+      
 
-    <form action='index.php?page=validation-email' method = 'post'>
-  <div class="form-group">
-    <label for="InputEmail">Email</label>
-    <input type="email" class="form-control" id="InputEmail" name="InputEmail" aria-describedby="emailHelp" placeholder="Email" value="{{ form.emailpre }}" >
-
-  </div>
-  <div class="form-group">
-    <label for="InputCode">Code</label>
-    <input type="password" class="form-control" id="InputCode" name="InputCode" placeholder="Code" value="{{ form.codesecretpre }}">
-  </div>
-  <button type="submit" class="btn btn-primary" name="btValidation" id="btValidation">Valider</button>
-</form>
-<<<<<<< HEAD
-
-
-        </div>
-
-</div> 
         {% endblock %}
-=======
-    
-    
-        </div>
-    
-</div> 
-        {% endblock %} 
->>>>>>> 3eb8996413841b0e12e2d026c3b6755a90a43e5e
+
