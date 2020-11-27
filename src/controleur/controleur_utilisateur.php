@@ -96,4 +96,3 @@ function actionUtilisateurModif($twig, $db){
                 
 echo $twig->render('utilisateur-modif.html.twig', array('form'=>$form)); 
     }
-  
