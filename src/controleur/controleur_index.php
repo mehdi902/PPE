@@ -52,7 +52,7 @@ function actionInscription($twig,$db){
      
      $headers[] = 'From: Nom du site';
  
-     mail($to, $subject, $message, implode("\r\n", $headers));
+     
 
          if ($inputPassword!=$inputPassword2){
              $form['valide'] = false;
@@ -60,6 +60,7 @@ function actionInscription($twig,$db){
          else{
                  $utilisateur = new Utilisateur($db);
                  $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $inputnom, $inputprenom, $code, $date);
+                 mail($to, $subject, $message, implode("\r\n", $headers));
                  if (!$exec){
                      $form['valide'] = false;
                      $form['message'] = 'Problème d\'insertion dans la table utilisateur ';

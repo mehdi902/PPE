@@ -25,12 +25,12 @@
                     {% if form.role == 1 %}
                         <h1 class="h3 mb-3 font-weight-normal">Vous êtes administrateur du site</h1>
                     {% else %}
-                        <h1 class="h3 mb-3 font-weight-normal">Vous êtes un client du site </h1>
+                        <h1 class="h3 mb-3 font-weight-normal">Vous êtes un Développeur du site </h1>
                     {% endif %}
                 {% else %}        
                     <h1 class="h3 mb-3 font-weight-normal">Echec de l'inscription</h1>
                     <h1 class="h3 mb-3 font-weight-normal">Erreur : {{form.message}}</h1>
-                    <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=inscrire">Retourner sur la page d'inscription</a></h1>
+                    <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=inscription"> Retourner sur la page d'inscription</a></h1>
                 {% endif %}
         </div>
         </div>
@@ -81,10 +81,6 @@
 
         </div>        
 
-        <div class="progress card mx-auto" style="max-height: 50%;max-width: 80%">
-            <div class="card-body" style="margin-left: 5%; margin-right: 5%; width: 80%; height: 20%">
-            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 10%;height: 50%; margin-top: 3%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-        </div>
+     
 {% endif %}
 {% endblock %} 
