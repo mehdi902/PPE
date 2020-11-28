@@ -16,7 +16,19 @@
                     </div>   
          </div>
        {% endif %}
+       {% if form.messageAjout == true %}
+            <div>
+                    <div class="alert alert-danger alert-dismissible fade show mx-auto mx-lg-auto mx-md-auto" role="alert">
+                        <strong> Ce langage fait déjà partie de vos compétences</strong> 
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>   
+         </div>
+       {% endif %}
     
+       
+       
     <div class="mx-auto" style="width: 20rem; margin-top: 3%">
         <img src="../web/image/{{ liste.photo }}" class="img-fluid" alt="Responsive image"> 
         <div class="card-body">
@@ -64,7 +76,47 @@
 
         </table>
     </div>
+    <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Vos langages</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for langage in langagesUtilises %}
+                    <tr>  
+                        <td>{{ langage.libelle}}</td>
+                        <td>
+                                    <button type="button" class="btn btn-default btn-lg">
+                                    <a href="index.php?page=profil&id={{langage.id}}" />
+                                    <i class="fas fa-trash"></i>
+                                    Supprimer</button>
+                        </td>
+                    </tr>
+                    {% endfor  %}
 
+        </table>
     
-    
+       <div class="mx-auto" >
+            <div >
+                <h2>Ajoutez un langage à votre profil</h2>
+        <form class="form-signin" action="index.php?page=profil" method="post" enctype="application/x-www-form-urlencoded">
+            <div class="card-body mx-auto" >
+                
+                 <select class="form-control" id="inputLangage" name="inputLangage">
+                    {% for langage in recupLangage %}
+                    
+                     <option value="{{ langage.id }}">{{ langage.libelle }}</option>
+                    {% endfor  %}
+                 </select>
+
+                <div class ="card-Footer mx-auto" style="width: 50%; height:50%; " >
+                <button class="btn btn-lg btn-primary btn-block mx-auto"  type="submit" name="btAjouterLangageProfil" id="btEnvoyer">Ajouter</button>
+                </div>
+            </div> 
+        </form>       
+            </div>
+        </div>
+
     {% endblock %}

@@ -113,14 +113,29 @@ function actionDeconnexion($twig){
     
 function actionProfil($twig, $db){
     $form = array();
+    $form['messageAjout'] = false;
     $utilisateur = new Utilisateur($db);
     $liste = $utilisateur->selectProfil($_SESSION['login']);
+    $langage = new Langage($db);
+    $recupLangage = $langage->select();
     
     
+    if(isset($_GET['id'])){
+        $profilUtilisateur = new Profil($db) ;
+        $exec=$profilUtilisateur->delete($_GET['id'],$_SESSION['login']);
+        if (!$exec){
+            $form['suppression'] = false;
+            $form['messagesupression'] = 'Problème de suppression dans la table codage';
+        }
+    else{
+        $form['supression'] = true;
+        $form['messagesupression'] = 'Langage supprimé avec succès';
+        }
+    }
+     
     if(isset($_POST['btProfil'])){
       $email = $_POST['email'];
         
-      
       
       $photo=NULL;
       
@@ -151,17 +166,25 @@ function actionProfil($twig, $db){
                 $exec = $utilisateur->updateProfil($photo, $email);
                 $form['message'] = 'Rechargez la page pour afficher les modifications';
                         }
-    
-    echo $twig->render('profil.html.twig', array('form'=>$form,'liste'=>$liste));
+        if(isset($_POST['btAjouterLangageProfil'])){
+            $id = $_POST['inputLangage'];
+            $profil = new Profil($db);
+            $verificationDouble = $profil->selectLangageUti($id,$_SESSION['login'] );
+            if ($verificationDouble==null){
+            $insertLangageUtil = $profil->insertLangage( $id ,$_SESSION['login']);
+            
+            }
+            else{$form['messageAjout'] = true;}
+        }
+    $langageProfil = new Profil($db);
+    $langagesUtilises = $langageProfil->select($_SESSION['login']);
+    echo $twig->render('profil.html.twig', array('form'=>$form,'liste'=>$liste, 'recupLangage'=>$recupLangage, 'langagesUtilises'=>$langagesUtilises));
     
 }
 
 
 
-function actionDeveloppeur($twig) {
-    echo $twig->render('developpeur.html.twig',array());
 
-}
 function actionChangermdp($twig,$db){
     $form = array();
     $form['valide'] = true;
