@@ -36,7 +36,7 @@ function actionInscription($twig,$db){
       </head>
       <body>
         
-        <p>Bonjour '.$inputprenom.' '.$inputnom.', Merci pour votre inscription à Nomdusite. Pour activer votre compte, veuillez utiliser le code suivant.</p>
+        <p>Bonjour '.$inputprenom.' '.$inputnom.', Merci pour votre inscription à ProgreZio. Pour activer votre compte, veuillez utiliser le code suivant.</p>
         <p>'.$code.'</p>
         <a href="'.$adresse.'">cliquez ici</a>
         
@@ -50,7 +50,7 @@ function actionInscription($twig,$db){
 
      // En-têtes additionnels
      
-     $headers[] = 'From: Nom du site';
+     $headers[] = 'From: ProgreZio';
  
      
 
