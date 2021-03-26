@@ -10,7 +10,7 @@ class Mail{
         $this->db=$db;
         $this->select = $db->prepare("select nom, prenom, email, mdp, uniqid, iddeveloppeur, validation from utilisateur where email=:email and uniqid=:code");
         $this->updateUti = $db->prepare("update utilisateur set idrole = 2 where email=:email");
-        $this->selectUniqid = $db->prepare("select uniqid from utilisateur where email = :email");
+        $this->selectUniqid = $db->prepare("select uniqid as code from utilisateur where email = :email");
 
         
     }
