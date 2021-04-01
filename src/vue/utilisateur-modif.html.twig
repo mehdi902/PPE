@@ -73,7 +73,7 @@
 									<div>
 										<label for="listeD">Votre département :</label>
 										<select id='listeD' name="listeD" class="form-control">
-											<option value="01" selected="true" disabled="disabled"> Département :</option>
+											<option value={{ form.utilisateur.departement }} selected="true" disabled="disabled"> Département :</option>
 										</select>
 									</div>
 									<div>
@@ -81,7 +81,7 @@
 
 										<label for="listeV">Votre ville :</label>
 										<select id="listeV" name="listeV" class="form-control">
-											<option value="01" selected="true" disabled="disabled">Ville :</option>
+											<option value={{ form.utilisateur.ville }} selected="true" disabled="disabled"> Ville :</option>
 										</select>
 
 									</div>
