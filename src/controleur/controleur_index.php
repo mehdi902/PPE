@@ -139,7 +139,7 @@ function actionProfil($twig, $db){
       $email = $_POST['email'];
         
       
-      $photo=NULL;
+      $photo="profilvide.png";
       
     if(isset($_FILES['photo'])){
         if(!empty($_FILES['photo']['name'])){
