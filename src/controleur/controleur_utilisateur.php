@@ -53,10 +53,16 @@ function actionUtilisateurModif($twig, $db)
         $email = $_POST['email'];
         $departement = $_POST['listeD'];
         $ville = $_POST['listeV'];
+        $villeUtil= $_POST['ville'];
+        $departementUtil= $_POST['departement'];
         $form['validemodif'] = true;
     
-    
-        $exec=$utilisateur->updateUtilisateur($nom, $prenom, $email, $departement, $ville);
+        if($ville == "" || $departement == ""){
+            $exec=$utilisateur->updateUtilisateur($nom, $prenom, $email, $departementUtil, $villeUtil);
+        }
+        else{
+            $exec=$utilisateur->updateUtilisateur($nom, $prenom, $email, $departement, $ville);}
+        
         if (!$exec) {
             $form['messageutili'] = 'Utilisateur incorrect';
         } else {
