@@ -56,8 +56,6 @@ listeV.innerHTML = '';
  li.value = e.nom;
 
  listeV.appendChild(li);
-
-
  });
 });
  // Fonction qui se lance lorsque l’accès au web service provoque une erreur
@@ -65,8 +63,6 @@ listeV.innerHTML = '';
  alert ('erreur');
  });
  }
-
-
 listeD.addEventListener('mouseup', e => {
 
 numDepartement = listeD.options[listeD.selectedIndex].value;
