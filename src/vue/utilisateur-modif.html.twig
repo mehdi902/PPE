@@ -1,74 +1,100 @@
 {% extends "base.html.twig" %}
-{% block style %}<link href="css/style-signin.css" rel="stylesheet"> {% endblock %}
-{% block title %} {{ parent() }} modification {% endblock %}
+{% block style %}<link href="css/style-signin.css" rel="stylesheet">
+{% endblock %}
+{% block title %}
+	{{ parent() }}
+	modification
+{% endblock %}
 
 {% block contenu %}
-    <div class="container">
-    {% if form.validemodif is defined %}
-            {% if form.validemodif == true %}
-            
-                <div class="container-fluid" style="margin-top: 2em">
-                    <div class="alert alert-warning alert-dismissible fade show mx-auto mx-lg-auto"  role="alert">
-                        <strong class="nav-link active" > {{ form.messageutili }} <a href="index.php?page=utilisateur">retour aux utilisateurs</a></strong>
-                    
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            
-                            <span aria-hidden="true">&times;</span>
-                        </button>                 
-    
-                    </div>
-                </div>    
-                
-                
-            {% else %}
-            
-                <div class="container-fluid" style="margin-top: 2em">
-                    <div class="alert alert-warning alert-dismissible fade show mx-auto mx-lg-auto" role="alert">
-                        <strong class="nav-link active" > {{ form.messageutili }} <a href="index.php?page=utilisateur">retour aux utilisateurs</a></strong>
-                         
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            
-                             <span aria-hidden="true">&times;</span>
-                        </button>                 
-    
-                    </div>     
-                    
-                    
-        {% endif %}
-    {% endif %}
-    
-    
-    
- {% if form.utilisateur is defined %}
-        {% if form.utilisateur != null %}
-    
-            
-  
-            
-            
-    <div class="row">
-        <div class="col-md">
-            
-    <form class="form-signin" action="index.php?page=utilisateur-modif" method="post" enctype="application/x-www-form-urlencoded">
-            <div class="card-body mx-auto" style="width: 70%; height:100%; margin-top: 2%">
-                <label for="inputNom" class="sr-only">nom :</label>
-                <input type="text" id="inputNom" name="inputNom" class="form-control" style="margin-bottom: 1%;"placeholder="Nom" value="{{ form.utilisateur.nom }}"required autofocus>
-             <label for="inputNom" class="sr-only">prenom :</label>
-                <input type="text" id="inputPrenom" name="inputPrenom" style="margin-bottom: 1%;" class="form-control" placeholder="Prenom" value="{{ form.utilisateur.prenom }}" required autofocus>
-              <label for="inputNom" class="sr-only">Ancien Mot de passe</label>
-                <input type="text" id="inputPrenom" name="inputOldMdp" style="margin-bottom: 1%;" class="form-control" placeholder="Nouveau mot de passe"  autofocus>
-                <label for="inputNom" class="sr-only">confirmation :</label>
-                <input type="text" id="inputPrenom" name="inputNewMdp" style="margin-bottom: 1%;" class="form-control" placeholder="Confirmation nouveau mot de passe" value="" autofocus>
-                <input type="hidden" name="email" value="{{ form.utilisateur.email }}"/> 
-                
-                <div class ="card-Footer mx-auto" style="width: 100%; height:50%; " >
-                <button class="btn btn-lg btn-primary btn-block mx-auto" style="width: 30%; height:80%; margin-top: 1%" type="submit" name="btModifier" id="btModifier">Modifier</button>
-                </div>
-            </div> 
-        </form> 
-    
-        </div>
-    </div>
-        </div>            
-    {% endif %}{% endif %}
-    {% endblock %} 
+	<div class="container">
+		{% if form.validemodif is defined %}
+			{% if form.validemodif == true %}
+
+				<div class="container-fluid" style="margin-top: 2em">
+					<div class="alert alert-warning alert-dismissible fade show mx-auto mx-lg-auto" role="alert">
+						<strong class="nav-link active">
+							{{ form.messageutili }}
+							<a href="index.php?page=utilisateur">retour aux utilisateurs</a>
+						</strong>
+
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+							<span aria-hidden="true">&times;</span>
+						</button>
+
+					</div>
+				</div>
+
+
+			{% else %}
+
+				<div class="container-fluid" style="margin-top: 2em">
+					<div class="alert alert-warning alert-dismissible fade show mx-auto mx-lg-auto" role="alert">
+						<strong class="nav-link active">
+							{{ form.messageutili }}
+							<a href="index.php?page=utilisateur">retour aux utilisateurs</a>
+						</strong>
+
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+							<span aria-hidden="true">&times;</span>
+						</button>
+
+					</div>
+
+
+				{% endif %}
+			{% endif %}
+
+
+			{% if form.utilisateur is defined %}
+				{% if form.utilisateur != null %}
+
+
+					<div class="row">
+						<div class="col-md">
+
+							<form class="form-signin" action="index.php?page=utilisateur-modif" method="post" enctype="application/x-www-form-urlencoded">
+								<div class="card-body mx-auto" style="width: 70%; height:100%; margin-top: 2%">
+									<label for="inputNom" class="sr-only">Nom :</label>
+									<input type="text" id="inputNom" name="inputNom" class="form-control" style="margin-bottom: 1%;" placeholder="Nom" value="{{ form.utilisateur.nom }}" required autofocus>
+									
+                                    <label for="inputNom" class="sr-only">Prenom :</label>
+									<input type="text" id="inputPrenom" name="inputPrenom" style="margin-bottom: 1%;" class="form-control" placeholder="Prenom" value="{{ form.utilisateur.prenom }}" required autofocus>
+									
+                                    <label for="inputNom" class="sr-only">Ancien Mot de passe</label>
+									<input type="text" id="inputPrenom" name="inputOldMdp" style="margin-bottom: 1%;" class="form-control" placeholder="Nouveau mot de passe" autofocus>
+									
+                                    <label for="inputNom" class="sr-only">Confirmation :</label>
+									<input type="text" id="inputPrenom" name="inputNewMdp" style="margin-bottom: 1%;" class="form-control" placeholder="Confirmation nouveau mot de passe" value="" autofocus>
+									<input type="hidden" name="email" value="{{ form.utilisateur.email }}"/>
+
+									<div>
+										<label for="listeD">Votre département :</label>
+										<select id='listeD' name="listeD" class="form-control">
+											<option value="01" selected="true" disabled="disabled"> Département :</option>
+										</select>
+									</div>
+									<div>
+
+
+										<label for="listeV">Votre ville :</label>
+										<select id="listeV" name="listeV" class="form-control">
+											<option value="01" selected="true" disabled="disabled">Ville :</option>
+										</select>
+
+									</div>
+
+									<div class="card-Footer mx-auto" style="width: 100%; height:50%; ">
+										<button class="btn btn-lg btn-primary btn-block mx-auto" style="width: 30%; height:80%; margin-top: 1%" type="submit" name="btModifier" id="btModifier">Modifier</button>
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		{% endif %}
+	{% endblock %}

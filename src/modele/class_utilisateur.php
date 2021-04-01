@@ -87,9 +87,9 @@
         }
         return $this->selectByEmail->fetch();
     }
-    public function updateUtilisateur($nom,$prenom,$email){
+    public function updateUtilisateur($nom,$prenom,$email, $departement, $ville){
         $r = true;
-        $this->updateUtilisateur->execute(array(':nom'=>$nom,':prenom'=>$prenom,':email'=>$email));
+        $this->updateUtilisateur->execute(array(':nom'=>$nom,':prenom'=>$prenom,':email'=>$email, ':departement'=>$departement, ':ville'=>$ville));
         if ($this->updateUtilisateur->errorCode()!=0){
             print_r($this->updateUtilisateur->errorInfo());
             $r=false;
