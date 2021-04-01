@@ -36,7 +36,7 @@ function actionInscription($twig,$db){
       </head>
       <body>
         
-        <p>Bonjour '.$inputprenom.' '.$inputnom.', Merci pour votre inscription à Nomdusite. Pour activer votre compte, veuillez utiliser le code suivant.</p>
+        <p>Bonjour '.$inputprenom.' '.$inputnom.', Merci pour votre inscription à ProgreZio. Pour activer votre compte, veuillez utiliser le code suivant.</p>
         <p>'.$code.'</p>
         <a href="'.$adresse.'">cliquez ici</a>
         
@@ -50,9 +50,9 @@ function actionInscription($twig,$db){
 
      // En-têtes additionnels
      
-     $headers[] = 'From: Nom du site';
+     $headers[] = 'From: ProgreZio';
  
-     mail($to, $subject, $message, implode("\r\n", $headers));
+     
 
          if ($inputPassword!=$inputPassword2){
              $form['valide'] = false;
@@ -60,6 +60,7 @@ function actionInscription($twig,$db){
          else{
                  $utilisateur = new Utilisateur($db);
                  $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $inputnom, $inputprenom, $code, $date);
+                 mail($to, $subject, $message, implode("\r\n", $headers));
                  if (!$exec){
                      $form['valide'] = false;
                      $form['message'] = 'Problème d\'insertion dans la table utilisateur ';
@@ -84,9 +85,9 @@ function actionConnexion($twig,$db){
             $utilisateur = new Utilisateur($db);
             $unUtilisateur = $utilisateur->connect($inputEmail);
             if ($unUtilisateur!=null){
-                if(!password_verify($inputPassword,$unUtilisateur['mdp'])){
+                if(!password_verify($inputPassword,$unUtilisateur['mdp'])|| $unUtilisateur['idRole']== 3 ){
                     $form['valide'] = false;
-                    $form['messageConnexion'] = 'Login ou mot de passe incorrect';
+                    $form['messageConnexion'] = "Login incorrect ou le compte n'est pas activé";
                     }            
                 else{
                     $_SESSION['login'] = $inputEmail;
@@ -112,14 +113,29 @@ function actionDeconnexion($twig){
     
 function actionProfil($twig, $db){
     $form = array();
+    $form['messageAjout'] = false;
     $utilisateur = new Utilisateur($db);
     $liste = $utilisateur->selectProfil($_SESSION['login']);
+    $langage = new Langage($db);
+    $recupLangage = $langage->select();
     
     
+    if(isset($_GET['id'])){
+        $profilUtilisateur = new Profil($db) ;
+        $exec=$profilUtilisateur->delete($_GET['id'],$_SESSION['login']);
+        if (!$exec){
+            $form['suppression'] = false;
+            $form['messagesupression'] = 'Problème de suppression dans la table codage';
+        }
+    else{
+        $form['supression'] = true;
+        $form['messagesupression'] = 'Langage supprimé avec succès';
+        }
+    }
+     
     if(isset($_POST['btProfil'])){
       $email = $_POST['email'];
         
-      
       
       $photo=NULL;
       
@@ -150,17 +166,25 @@ function actionProfil($twig, $db){
                 $exec = $utilisateur->updateProfil($photo, $email);
                 $form['message'] = 'Rechargez la page pour afficher les modifications';
                         }
-    
-    echo $twig->render('profil.html.twig', array('form'=>$form,'liste'=>$liste));
+        if(isset($_POST['btAjouterLangageProfil'])){
+            $id = $_POST['inputLangage'];
+            $profil = new Profil($db);
+            $verificationDouble = $profil->selectLangageUti($id,$_SESSION['login'] );
+            if ($verificationDouble==null){
+            $insertLangageUtil = $profil->insertLangage( $id ,$_SESSION['login']);
+            
+            }
+            else{$form['messageAjout'] = true;}
+        }
+    $langageProfil = new Profil($db);
+    $langagesUtilises = $langageProfil->select($_SESSION['login']);
+    echo $twig->render('profil.html.twig', array('form'=>$form,'liste'=>$liste, 'recupLangage'=>$recupLangage, 'langagesUtilises'=>$langagesUtilises));
     
 }
 
 
 
-function actionDeveloppeur($twig) {
-    echo $twig->render('developpeur.html.twig',array());
 
-}
 function actionChangermdp($twig,$db){
     $form = array();
     $form['valide'] = true;

@@ -10,7 +10,6 @@ function getPage($db){
     $lesPages['profil'] = "actionProfil;0";    
     $lesPages['langage'] = "actionLangage;0"; 
     $lesPages['utilisateur'] = "actionUtilisateur;1";
-    $lesPages['developpeur'] = "actionDeveloppeur;1";
     $lesPages['validation-email'] = "actionValidation;0";
     $lesPages['changermdp'] = "actionChangermdp;0";
     $lesPages['utilisateur-modif'] = "actionUtilisateurModif;1";
