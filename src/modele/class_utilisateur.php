@@ -18,10 +18,10 @@
         
         public function __construct($db){
             $this->db=$db;
-            $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,idrole,uniqid, date, photo) values(:email,:mdp,:nom,:prenom,:idrole,:uniqid, :date, 'profilvide.png')");
+            $this->insert=$db->prepare("insert into utilisateur(email,mdp,nom,prenom,idrole,uniqid, date, photo, departement, ville) values(:email,:mdp,:nom,:prenom,:idrole,:uniqid, :date, 'profilvide.png', :departement, :ville)");
             $this->connect = $db->prepare("select email, idRole, mdp from utilisateur where email=:email");
             $this->select = $db->prepare("select email, idrole, nom, prenom, mdp , role.libelle as libellerole from utilisateur, role  where utilisateur.idrole = role.id order by nom");
-            $this->selectProfil = $db->prepare("select email, idrole, nom, prenom,photo, mdp , role.libelle as libellerole from utilisateur, role  where email = :email");
+            $this->selectProfil = $db->prepare("select email, ville, departement, idrole, nom, prenom,photo, mdp , role.libelle as libellerole from utilisateur, role  where email = :email");
             $this->update = $db->prepare("update utilisateur set mdp=:mdp where email=:email");   
             $this->delete = $db->prepare("delete from utilisateur where email=:email");
             $this->selectByEmail = $db->prepare("select idrole, nom, prenom, email, idrole from utilisateur where email = :email");
@@ -32,9 +32,9 @@
             $this->updateProfil = $db->prepare("update utilisateur set photo=:image where email=:email");
         }
 
-        public function insert($email, $mdp, $idrole, $nom, $prenom,$uniqid, $date){
+        public function insert($email, $mdp, $idrole, $nom, $prenom,$uniqid, $date, $departement, $ville){
             $r = true;
-            $this->insert->execute(array(':email'=>$email, ':mdp'=>$mdp, ':idrole'=>$idrole, ':nom'=>$nom, ':prenom'=>$prenom, ':uniqid'=>$uniqid, ':date'=>$date));
+            $this->insert->execute(array(':email'=>$email, ':mdp'=>$mdp, ':idrole'=>$idrole, ':nom'=>$nom, ':prenom'=>$prenom, ':uniqid'=>$uniqid, ':date'=>$date, ':departement'=>$departement,':ville' => $ville));
 
             if ($this->insert->errorCode()!=0){
                 print_r($this->insert->errorInfo());
