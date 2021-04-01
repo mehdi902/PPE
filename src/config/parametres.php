@@ -1,7 +1,7 @@
 <?php  
   $config['serveur']='localhost';
   $config['login'] = 'login4055';
-  $config['mdp'] ='xCNWLJEjvaLqmTw';
+  $config['mdp'] ='mpkuZPnjUkRoEST';
   $config['bd'] = 'PPE';
 
 
