@@ -17,6 +17,8 @@ function actionInscription($twig,$db){
         $inputPassword2 =$_POST['inputPassword2'];
         $inputnom =$_POST['nom'];
         $inputprenom =$_POST['prenom'];
+        $inputDepartement = $_POST['listeD'];
+        $inputVille = $_POST['listeV'];
         $role = $_POST['role'];
         $date = date('Y-m-d H:i:s');
         $form['valide'] = true;
@@ -59,7 +61,7 @@ function actionInscription($twig,$db){
          $form['message'] = 'Les mots de passe sont différents';}
          else{
                  $utilisateur = new Utilisateur($db);
-                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $inputnom, $inputprenom, $code, $date);
+                 $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role, $inputnom, $inputprenom, $code, $date,$inputDepartement,$inputVille);
                  mail($to, $subject, $message, implode("\r\n", $headers));
                  if (!$exec){
                      $form['valide'] = false;
