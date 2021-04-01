@@ -24,7 +24,7 @@
             $this->selectProfil = $db->prepare("select email, ville, departement, idrole, nom, prenom,photo, mdp , role.libelle as libellerole from utilisateur, role  where email = :email");
             $this->update = $db->prepare("update utilisateur set mdp=:mdp where email=:email");   
             $this->delete = $db->prepare("delete from utilisateur where email=:email");
-            $this->selectByEmail = $db->prepare("select idrole, nom, prenom, email, idrole from utilisateur where email = :email");
+            $this->selectByEmail = $db->prepare("select idrole, nom, prenom, email, idrole, ville, departement from utilisateur where email = :email");
             $this->updateUtilisateur = $db->prepare("update utilisateur set nom=:nom, prenom=:prenom, departement=:departement, ville=:ville where email=:email");
             $this->updateMdp = $db->prepare("update utilisateur set mdp=:mdp where email=:email");
             $this->selectLimit = $db->prepare("select email, nom from utilisateur order by email limit :inf,:limite");
