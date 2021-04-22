@@ -145,7 +145,7 @@ function actionProfil($twig, $db){
         if(!empty($_FILES['photo']['name'])){
             $extensions_ok = array('png', 'gif', 'jpg', 'jpeg');
             $taille_max = 500000; 
-            $dest_dossier = '/var/www/groupe5/situation1/web/image/';      
+            $dest_dossier = 'var/www/groupe5/situation1/web/image/';      
             if( !in_array( substr(strrchr($_FILES['photo']['name'], '.'), 1), $extensions_ok ) ){
                 echo 'Veuillez sélectionner un fichier de type png, gif ou jpg !';            } 
                 else{    
